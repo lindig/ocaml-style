@@ -1,34 +1,65 @@
 
-# Towards Clarity and Grace in OCaml Programs
+# OCaml Towards Clarity and Grace
 
-Proper format of constant and literals
-if vs. match - use of semicolon
-prefer pattern matching over if-then-else
-avoid global open
-avoid deep nesting
-naming conventions for types, values, modules, signatures
-Split imperative and functional code
-Avoid references
-Introduce interfaces
-Documentation of interfaces
-indentation
-line length
-Avoid introducing new dependencies
-Logging
-equality: != and == vs <> and =
-how to write a compare function
-tail recursion
-complexity
-exceptions
-finally: resource de-allocation
+This is a guide towards writing better [OCaml] code.  We all like to
+write [OCaml] code that is correct, maintainable, efficient, and maybe
+even beautiful. The sad truth is that this cannot be achieved simply by
+following some rules. Just like it is not enough for a book to be
+composed of correct sentences and coherent paragraphs to be considered
+good. However, a book violating these principles stands little chance of
+finding many readers. Likewise, this guide tries to help with the small
+structures in programming [OCaml] upon which we can hope to build bigger
+ones.
 
-## Constants
+[OCaml]:  https://www.ocaml.org/
 
-Avoid putting magic constants into source code.
+## Other Resources
+
+* [Upenn]'s style guide for student projects
+* [OCaml Tutorial]
+
+[Upenn]:  https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
+[OCaml Tutorial]: https://ocaml.org/learn/tutorials/guidelines.html
+
+## Indentation, Line Length, File Names
+
+## Naming and Declarations
+
+### Constants
+
+## Concurrency, Threads
+
+## Error Handling
+
+## Git - Commit Messages
+
+## Special Topics
 
 
+### if vs. match - use of semicolon
+### prefer pattern matching over if-then-else
+### avoid global open
+### avoid deep nesting
+### naming conventions for types, values, modules, signatures
+### Split imperative and functional code
+### Avoid references
+### Introduce interfaces
+### Documentation of interfaces
+### indentation
+### line length
+### Avoid introducing new dependencies
+### Logging
+### equality: != and == vs <> and =
+### how to write a compare function
+### tail recursion
+### complexity
+### exceptions
+### finally: resource de-allocation
+### commit messages
+### functions - argument order
+### functions - pattern matching
 
-## Avoid Opening Modules Globally
+### Avoid Opening Modules Globally
 
 For convenience, many developers open modules globally in order to gain
 access to functions without having to use qualified access. Below,
@@ -55,7 +86,7 @@ let main () =
 let () = main ()
 ```
 
-### Do This Instead
+#### Do This Instead
 
 Between opening a module globally and not at all, several options exist.
 
@@ -114,7 +145,7 @@ Between opening a module globally and not at all, several options exist.
   inside a module
 
 
-### Rationale
+#### Rationale
 
 Opening a module introduces all its values and constructors into the
 local module. Since the definitions of these values and constructors are
@@ -122,7 +153,5 @@ not visible, it becomes very hard to understand the code without tool
 support. While a developer might argue that tool support is available,
 it is not during reviews on GitHub or when looking at a printout. The
 problem is exaggerated when several modules are opened.
-
-### Examples
 
 
