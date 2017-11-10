@@ -18,10 +18,12 @@ ones.
 * [Upenn]'s style guide for student projects
 * [OCaml Tutorial]
 * [OCaml Manual]
+* [Real World OCaml] Book
 
-[Upenn]:  https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
-[OCaml Tutorial]: https://ocaml.org/learn/tutorials/guidelines.html
-[OCaml Manual]: http://caml.inria.fr/pub/docs/manual-ocaml/index.html
+[Upenn]:            https  //www.seas.upenn.edu/~cis341/current/programming_style.shtml
+[OCaml Tutorial]:   https   //ocaml.org/learn/tutorials/guidelines.html
+[OCaml Manual]:     http    //caml.inria.fr/pub/docs/manual-ocaml/index.html
+[Real World OCaml]: https   //realworldocaml.org/
 
 ## Indentation, Line Length
 
@@ -108,6 +110,40 @@ new context.
 [ocamldoc]: http://caml.inria.fr/pub/docs/manual-ocaml/ocamldoc.html
 
 ## Naming and Declarations
+
+[OCaml] has a few conventions for names. In particular, capitalisation
+is significant.
+
+* Types: `lower_case`.
+* Type variables: `'lower_case`
+* Values and Functions: `lower_case`
+* Constructors: `UpperCase` or `Upper_Case`
+* Record Fields: `lower_case`
+* Modules: `UpperCase`
+* Signatures: `UpperCase`
+* Module Types: `ALLCAPS`
+
+Special cases:
+
+* A file `abc.ml` is mapped to module `Abc` even though the filename is
+  not capitalised. The corresponding interface is `abc.mli`.
+
+* When a module defines a central (often abstract) data type, it is
+  typically named `t`:
+
+```
+module Tree: sig
+  type 'a t
+  val empty: 'a t
+end = struct
+  type 'a t = Empty | Tree of 'a t * 'a * 'a t
+  let empty = Empty
+end
+```
+
+
+
+
 ## Resources and Exceptions: use finally
 
 Ensure that resources are de-allocated in the presence of exceptions.
@@ -324,6 +360,30 @@ existing code.
 
 ## Error Handling
 
+## Scopimg
+
+Use the module system to group values. It's quite common to define
+simple values that belong together and to indicate this in their names:
+
+```
+let option_debug     = false
+let option_verbosity = High
+let option_log       = stdout
+```
+It is better to let the module system do the work:
+
+```
+module Option = struct
+  let debug     = false
+  let verbosity = High
+  let log       = stdout
+end
+```
+
+A value can now be accessed like in `Option.debug`. A module simply used
+for grouping doesn't require an interface.
+
+
 ## Git - Commit Messages
 
 ## Special Topics
@@ -356,12 +416,90 @@ similar local control flow is probably avoidable.
 
 ### naming conventions for types, values, modules, signatures
 ### Split imperative and functional code
-### Introduce interfaces
-### Documentation of interfaces
+
+### Introduce and Document Interfaces
+
+Module interfaces are the best way to document and control an
+implementation - employ them widely.
+
+A module encapsulates code serving a specific purpose. An interface
+should hide implementation details and document the API.
+
+In [OCaml], every file `abc.ml` is a module and should come with an
+interface `abc.mli`. In addition, a module can be part of a (file)
+module using `struct .. end`. This is the only way to define functors.
+
+```
+module ID : sig
+  type t
+
+  val make: unit -> t
+  (** [make] creates a unique token *)
+
+  val equal: t -> t -> bool
+  (** [equal] is true, if and only if two tokens are the same *)
+end = struct
+  type t = unit ref
+  let make () = ref ()
+  let equal x y = x == y (* use pointer equality *)
+end
+```
+
+* Add list of examples here
+
+
 ### Avoid introducing new dependencies
+
+Introducing new dependencies on outside libraries needs to be well
+justified.
+
+With Opam it is easy to install libraries and to use them. It is usually
+better to use a well-established and maintained library than to roll
+your own. This is especially true for well-established protocols,
+formats and problems in general. But any new library also brings along
+the responsibility to watch its development.
+
 ### Logging
-### how to write a compare function
-### tail recursion
+
+
+### Compare Functions
+
+[OCaml] provides a generic [compare] function but it can give unexpected
+results when comparing complex values or not a desired order. This is
+the reason that the [Map.Make] functor requires to define a compare
+function.  Here is a recipe to define a custom compare function:
+
+```
+module Time = struct
+  type 'a t =
+    { hour:     int
+    ; minutes:  int
+    ; seconds:  int
+    ; info:     'a
+    }
+
+  let (<?>) c (cmp,x,y) =
+    if c = 0
+    then cmp x y
+    else c
+
+  let compare t1 t2 =
+    compare t1.hour t2.hour
+    <?> (compare, t1.minutes, t2.minutes)
+    <?> (compare, t1.seconds, t2.seconds)
+end
+```
+
+### Tail Recursion
+
+Recursive functions operating on large data structures need to be tail
+recursive as otherwise the runtime stack may overflow.
+
+While tail recursiveness is generally desirable, it is often not
+required because data is not large. For performance it is usually better
+to pay attention to allocation patterns than to tail recursion.
+
+
 ### complexity
 ### exceptions
 ### commit messages
