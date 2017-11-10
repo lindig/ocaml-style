@@ -17,49 +17,150 @@ ones.
 
 * [Upenn]'s style guide for student projects
 * [OCaml Tutorial]
+* [OCaml Manual]
 
 [Upenn]:  https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
 [OCaml Tutorial]: https://ocaml.org/learn/tutorials/guidelines.html
+[OCaml Manual]: http://caml.inria.fr/pub/docs/manual-ocaml/index.html
 
-## Indentation, Line Length, File Names
+## Indentation, Line Length
+
+* Indentation must always reflect the logic of a program.
+
+* In existing code, adopt the existing style for indentation: tabs or
+  spaces.
+
+* Line length should not exceed 100 characters. Break up long lines in
+  new code in particular.
+
+* For new code, prefer spaces over tabs and use [ocp-indent] to maintain
+  consistent indentation. Note that [ocp-indent] does not break up long lines.
+
+* Most OCaml code bases uses 2 spaces per indentation level.
+
+Rationale:
+
+* Overly long lines create problems when printing source code and when
+  resolving merge conflicts in tools by forcing a lot of sideways
+  scrolling.
+* Spaces are unambiguous in meaning whereas tabs depend on the
+  environment.
+* [ocp-indent] is a proven way to re-establish consistent
+  indentation while still leaving room for other aspects of code
+  formatting.
+
+[ocp-indent]: https://github.com/OCamlPro/ocp-indent
+
+### Comments
+
+Comments generally go before the code they are referencing. The possible
+exception are declarations in interfaces (mli files, signatures) and
+types where they can go after the declaration.
+
+Syntactically there are two kinds of comments:
+
+1. General comments, enclosed in `(*` and `*)`
+2. Special comments, enclosed in `(**` and `*)`
+
+Special comments are associated with type and values in a program and
+treated specially by the compiler. They become available in automatically
+generated documentation.  For the association to work, there must be no
+empty line between a special comment and the element they are associated
+with. See the section about [ocamldoc] for details.
+
+Code should always be as clear as possible but that clarity cannot
+always convey the reason behind a design. Comments have the role to
+provide it: the why.
+
+### What to Comment
+
+* The purpose of a module or functor
+* The purpose of a value or function in an signature (interface)
+* The purpose of a type declaration or its components, if not obvious
+* The purpose of record components and variants in types, if not obvious
+* Unusual Algorithms and their complexity
+* Invariants when not expressed as assertions
+* Error handling
+
+### What not to Comment
+
+* Purpose of a local let binding - the name should tell it
+* Every line in function
+
+### Good Examples
+
+* [Ocaml List](https://github.com/ocaml/ocaml/blob/trunk/stdlib/list.mli)
+  The documentation of the standard list module. Each function is
+  commented below its signature.
+
+* [Container Hash Set](https://github.com/c-cube/ocaml-containers/blob/master/src/data/CCHashSet.mli)
+
+* [Mtime](https://github.com/dbuenzli/mtime/blob/master/src/mtime.mli)
+  with [implementation](https://github.com/dbuenzli/mtime/blob/master/src/mtime.ml)
+
+### Caveats
+
+Code duplication is bad but copying comments is worse. Be very careful
+when copying comments to make sure they are not becoming misleading in a
+new context.
+
+
+[ocamldoc]: http://caml.inria.fr/pub/docs/manual-ocaml/ocamldoc.html
 
 ## Naming and Declarations
+## Resources and Exceptions: use finally
 
-### Constants
+Ensure that resources are de-allocated in the presence of exceptions.
+This is typically done with a function like `finally`:
 
-## Concurrency, Threads
+```
+let finally (f: unit -> 'a) (free: unit -> 'b) =
+  let res = try f () with exn -> free (); raise exn in
+  free ();
+  res
 
-## Error Handling
+let with_file path (f: in_channel -> 'a) =
+  let io = open_in path in
+  finally
+    (fun () -> f io)
+    (fun () -> close_in io)
 
-## Git - Commit Messages
+with_file "/etc/passwd" (fun io -> input_line io |> print_endline)
+```
 
-## Special Topics
+In the above code we make sure to close the file even if the function
+reading from it throws an exception. A function like `finally` should be
+already defined in existing projects so there is no need to re-implement
+it locally.
+
+Resources that need to be managed are not just files but can be
+anything like database and network connections or timers.
 
 
-### if vs. match - use of semicolon
-### prefer pattern matching over if-then-else
-### avoid global open
-### avoid deep nesting
-### naming conventions for types, values, modules, signatures
-### Split imperative and functional code
-### Avoid references
-### Introduce interfaces
-### Documentation of interfaces
-### indentation
-### line length
-### Avoid introducing new dependencies
-### Logging
-### equality: != and == vs <> and =
-### how to write a compare function
-### tail recursion
-### complexity
-### exceptions
-### finally: resource de-allocation
-### commit messages
-### functions - argument order
-### functions - pattern matching
+## Constants
 
-### Avoid Opening Modules Globally
+* Avoid using magic constants as literals like `86400` for the number of
+  seconds in a day. Constants should be let-bound to a name:
+
+```
+let ( ** ) x y    = Int64.mul (Int64.of_int x) y
+let sec           = 1L
+let sec_per_min   = 60 ** sec
+let sec_per_hour  = 60 ** sec_per_min
+let sec_per_day   = 24 ** sec_per_hour
+```
+
+* For literals, picking the correct base can make them less magical:
+  compare `255` (decimal) with `0xff` (hexadecimal) or `0b111_1111`
+  (binary).
+
+* Structure long literal numbers with a underscores for
+  readability as in `0b1111_1111` above. It works in all bases, for
+  example in `1_000_000`.
+
+More details are in the [Ocaml Manual](http://caml.inria.fr/pub/docs/manual-ocaml/lex.html).
+
+## Avoid Opening Modules Globally
 
 For convenience, many developers open modules globally in order to gain
 access to functions without having to use qualified access. Below,
@@ -154,4 +255,116 @@ support. While a developer might argue that tool support is available,
 it is not during reviews on GitHub or when looking at a printout. The
 problem is exaggerated when several modules are opened.
 
+
+
+
+## Concurrency, Threads
+
+## Avoid Deep Nesting
+
+Code that is deeply nested is hard to read and hard to test. This
+suggests that it should be restructured - probably by introducing new
+functions.
+
+## Equality: `!=` and `==` vs `<>` and `=`
+
+Using `!=` and `==` for equality is probably wrong and you should use
+`<>` and `=` instead.
+
+[OCaml] has two kinds of equality:
+
+1. Structural equality, tested with `=` and `<>`. This compares the
+   shape of two values and is typically the correct choice.
+
+2. Pointer equality, tested with `==` and `!=`. This compares the
+   address in memory of two values. This is typically used in
+   performance-oriented code. Pointer equality implies structural
+   equality but not vice versa.
+
+
+
+## if vs. match - use of semicolon
+
+Be aware that statement sequences require `begin`/`end` in `if`
+expressions.  [OCaml] has some inconsistencies how it handles statement
+sequences (containing `;`). Compare:
+
+```
+match true with
+  | true -> ()
+  | false -> print_endline "1"; print_endline "2"
+(* prints nothing *)
+```
+versus:
+
+```
+if false then print_endline "1"; print_endline "2"
+(* prints 2 *)
+```
+
+A statement sequence inside an `if` or `else` branch must be grouped by
+`begin`/`end` or parentheses to be governed by the guard.
+
+```
+if false then begin
+  print_endline "1";
+  print_endline "2"
+end else begin
+  print_endline "3";
+  print_endline "4"
+end
+```
+
+The danger of not realising what code is governed by an if-expression is
+exasperated by incorrect indentation and by incremental changes to
+existing code.
+
+
+
+
+## Error Handling
+
+## Git - Commit Messages
+
+## Special Topics
+
+### Use Pattern Matching for Value Destruction
+
+The readability of code is improved by using pattern matching rather
+than (neeply nested) if-then-else control flow. Multiple patterns can be
+matched at the same time.
+
+```
+type color = Red | Yellow | Green
+
+let wait = function (* good *)
+  | Red     -> seconds 30
+  | Yellow  -> seconds 10
+  | Green   -> seconds 0
+
+let wait color = (* bad *)
+  if color = Red then seconds 30
+  else if color = Yellow then seconds 10
+  else seconds 0
+```
+
+## Avoid using references
+
+Most code does not require references. Introducing them should be well
+justified. In particular, using references to implement loops and
+similar local control flow is probably avoidable.
+
+### naming conventions for types, values, modules, signatures
+### Split imperative and functional code
+### Introduce interfaces
+### Documentation of interfaces
+### Avoid introducing new dependencies
+### Logging
+### how to write a compare function
+### tail recursion
+### complexity
+### exceptions
+### commit messages
+### functions - argument order
+### functions - pattern matching
 
