@@ -2,10 +2,10 @@
 #
 # theme(1) is part of discount, a Markdown implementation in C
 
-all: ocaml-style.html
+all: README.html
 
 clean:
-	rm -f ocaml-style.html
+	rm -f README.html
 
 %.html: %.md
 	theme $<
