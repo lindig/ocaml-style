@@ -621,6 +621,8 @@ body {
   </style>
 </head>
 <body>
+    <h1>OCaml Towards Clarity and Grace</h1>
+    <?theme toc?>
     <?theme body?>
 </body>
 </html>

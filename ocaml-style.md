@@ -5,11 +5,10 @@ This is a guide towards writing better [OCaml] code.  We all like to
 write [OCaml] code that is correct, maintainable, efficient, and maybe
 even beautiful. The sad truth is that this cannot be achieved simply by
 following some rules. Just like it is not enough for a book to be
-composed of correct sentences and coherent paragraphs to be considered
-good. However, a book violating these principles stands little chance of
-finding many readers. Likewise, this guide tries to help with the small
-structures in programming [OCaml] upon which we can hope to build bigger
-ones.
+composed of correct sentences and coherent paragraphs. However, a book
+violating these principles stands little chance of finding many readers.
+Likewise, this guide tries to help with the small structures in
+programming [OCaml] upon which we can hope to build bigger ones.
 
 [OCaml]:  https://www.ocaml.org/
 
@@ -20,10 +19,10 @@ ones.
 * [OCaml Manual]
 * [Real World OCaml] Book
 
-[Upenn]:            https  //www.seas.upenn.edu/~cis341/current/programming_style.shtml
-[OCaml Tutorial]:   https   //ocaml.org/learn/tutorials/guidelines.html
-[OCaml Manual]:     http    //caml.inria.fr/pub/docs/manual-ocaml/index.html
-[Real World OCaml]: https   //realworldocaml.org/
+[Upenn]:            https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
+[OCaml Tutorial]:   https://ocaml.org/learn/tutorials/guidelines.html
+[OCaml Manual]:     http://caml.inria.fr/pub/docs/manual-ocaml/index.html
+[Real World OCaml]: https://realworldocaml.org/
 
 ## Indentation, Line Length
 
@@ -53,7 +52,7 @@ Rationale:
 
 [ocp-indent]: https://github.com/OCamlPro/ocp-indent
 
-### Comments
+## Comments
 
 Comments generally go before the code they are referencing. The possible
 exception are declarations in interfaces (mli files, signatures) and
@@ -89,7 +88,7 @@ provide it: the why.
 * Purpose of a local let binding - the name should tell it
 * Every line in function
 
-### Good Examples
+### Examples
 
 * [Ocaml List](https://github.com/ocaml/ocaml/blob/trunk/stdlib/list.mli)
   The documentation of the standard list module. Each function is
@@ -123,6 +122,25 @@ is significant.
 * Signatures: `UpperCase`
 * Module Types: `ALLCAPS`
 
+General considerations:
+
+* Local names can be short, type variables vert short.
+* Use scoping (let, modules) to keep the number of names in a scope small.
+* Avoid encoding the type into a name: `x_int` or `x_opt` is usually not
+  better than `x`.
+* In a functional language like [OCaml], using `get` as part of a name
+  is often redundant unless it involves obtaining a value from a database
+  or file.
+
+Order of declarations: in a module, typically the following order is
+maintained unless dependencies force a different order or mixing
+declarations:
+
+1.  Exceptions
+2.  Types
+3.  Modules
+4.  Values
+
 Special cases:
 
 * A file `abc.ml` is mapped to module `Abc` even though the filename is
@@ -141,36 +159,28 @@ end = struct
 end
 ```
 
+## Scoping
 
-
-
-## Resources and Exceptions: use finally
-
-Ensure that resources are de-allocated in the presence of exceptions.
-This is typically done with a function like `finally`:
+Use the module system to group values. It's quite common to define
+simple values that belong together and to indicate this in their names:
 
 ```
-let finally (f: unit -> 'a) (free: unit -> 'b) =
-  let res = try f () with exn -> free (); raise exn in
-  free ();
-  res
+let option_debug     = false
+let option_verbosity = High
+let option_log       = stdout
+```
+It is better to let the module system do the work:
 
-let with_file path (f: in_channel -> 'a) =
-  let io = open_in path in
-  finally
-    (fun () -> f io)
-    (fun () -> close_in io)
-
-with_file "/etc/passwd" (fun io -> input_line io |> print_endline)
+```
+module Option = struct
+  let debug     = false
+  let verbosity = High
+  let log       = stdout
+end
 ```
 
-In the above code we make sure to close the file even if the function
-reading from it throws an exception. A function like `finally` should be
-already defined in existing projects so there is no need to re-implement
-it locally.
-
-Resources that need to be managed are not just files but can be
-anything like database and network connections or timers.
+A value can now be accessed like in `Option.debug`. A module simply used
+for grouping doesn't require an interface.
 
 
 ## Constants
@@ -190,11 +200,43 @@ let sec_per_day   = 24 ** sec_per_hour
   compare `255` (decimal) with `0xff` (hexadecimal) or `0b111_1111`
   (binary).
 
-* Structure long literal numbers with a underscores for
-  readability as in `0b1111_1111` above. It works in all bases, for
+* Structure long literal numbers with underscores for
+  readability as in `0b1111_1111` above. It works in all bases, like for
   example in `1_000_000`.
 
 More details are in the [Ocaml Manual](http://caml.inria.fr/pub/docs/manual-ocaml/lex.html).
+
+
+## Introduce and Document Interfaces
+
+Module interfaces are the best way to document and control an
+implementation - employ them widely.
+
+A module encapsulates code serving a specific purpose. An interface
+should hide implementation details and document the API.
+
+In [OCaml], every file `abc.ml` is a module and should come with an
+interface `abc.mli`. In addition, a module can be part of a (file)
+module using `struct .. end`. This is the only way to define functors.
+
+```
+module ID : sig
+  type t
+
+  val make: unit -> t
+  (** [make] creates a unique token *)
+
+  val equal: t -> t -> bool
+  (** [equal] is true, if and only if two tokens are the same *)
+end = struct
+  type t = unit ref
+  let make () = ref ()
+  let equal x y = x == y (* use pointer equality *)
+end
+```
+
+* Add list of examples here
+
 
 ## Avoid Opening Modules Globally
 
@@ -223,7 +265,7 @@ let main () =
 let () = main ()
 ```
 
-#### Do This Instead
+### Do This Instead
 
 Between opening a module globally and not at all, several options exist.
 
@@ -282,7 +324,7 @@ Between opening a module globally and not at all, several options exist.
   inside a module
 
 
-#### Rationale
+### Rationale
 
 Opening a module introduces all its values and constructors into the
 local module. Since the definitions of these values and constructors are
@@ -291,16 +333,11 @@ support. While a developer might argue that tool support is available,
 it is not during reviews on GitHub or when looking at a printout. The
 problem is exaggerated when several modules are opened.
 
+## Avoid using references
 
-
-
-## Concurrency, Threads
-
-## Avoid Deep Nesting
-
-Code that is deeply nested is hard to read and hard to test. This
-suggests that it should be restructured - probably by introducing new
-functions.
+Most code does not require references. Introducing them should be well
+justified. In particular, using references to implement loops and
+similar local control flow is probably avoidable.
 
 ## Equality: `!=` and `==` vs `<>` and `=`
 
@@ -316,7 +353,6 @@ Using `!=` and `==` for equality is probably wrong and you should use
    address in memory of two values. This is typically used in
    performance-oriented code. Pointer equality implies structural
    equality but not vice versa.
-
 
 
 ## if vs. match - use of semicolon
@@ -355,114 +391,220 @@ The danger of not realising what code is governed by an if-expression is
 exasperated by incorrect indentation and by incremental changes to
 existing code.
 
+## Error Messages and Error Handling
 
+* For handling errors programmatically, appropriate error values should
+  be defined to avoid matching against strings (The standard library is
+  violating this principle.)
 
+* Log messages are typically created from strings. [OCaml] defines the
+  following strings to report the location of an error: `__LOC__`,
+  `__FILE__`, `__LINE__`, `__MODULE__` and a few more -- see
+  [Ocaml Pervasives](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)
 
-## Error Handling
-
-## Scopimg
-
-Use the module system to group values. It's quite common to define
-simple values that belong together and to indicate this in their names:
-
-```
-let option_debug     = false
-let option_verbosity = High
-let option_log       = stdout
-```
-It is better to let the module system do the work:
+* Constructing log and error messages can be made simpler by defining a
+  function that behaves like `Printf.sprintf`:
 
 ```
-module Option = struct
-  let debug     = false
-  let verbosity = High
-  let log       = stdout
-end
+type 'a t = Ok of 'a | Error of string
+let error fmt = Printf.kprintf (fun msg -> Error msg) fmt
 ```
 
-A value can now be accessed like in `Option.debug`. A module simply used
-for grouping doesn't require an interface.
+* Messages going into a log still must make sense in the context of many
+  other lines before and after in the log. Therefore they must contain
+  enough detail.
+
+* Don't split log messages because in the actual log they be no longer
+  next to each other.
 
 
-## Git - Commit Messages
+## Split imperative and functional code
 
-## Special Topics
+Pureley functinal code is easiest to test. Therefore code should be as
+functional as possible and imperative code minimised.
 
-### Use Pattern Matching for Value Destruction
 
-The readability of code is improved by using pattern matching rather
-than (neeply nested) if-then-else control flow. Multiple patterns can be
-matched at the same time.
+## Functions - Argument Order
 
-```
-type color = Red | Yellow | Green
+In a function definition, the most common arguments should come first.
 
-let wait = function (* good *)
-  | Red     -> seconds 30
-  | Yellow  -> seconds 10
-  | Green   -> seconds 0
-
-let wait color = (* bad *)
-  if color = Red then seconds 30
-  else if color = Yellow then seconds 10
-  else seconds 0
-```
-
-## Avoid using references
-
-Most code does not require references. Introducing them should be well
-justified. In particular, using references to implement loops and
-similar local control flow is probably avoidable.
-
-### naming conventions for types, values, modules, signatures
-### Split imperative and functional code
-
-### Introduce and Document Interfaces
-
-Module interfaces are the best way to document and control an
-implementation - employ them widely.
-
-A module encapsulates code serving a specific purpose. An interface
-should hide implementation details and document the API.
-
-In [OCaml], every file `abc.ml` is a module and should come with an
-interface `abc.mli`. In addition, a module can be part of a (file)
-module using `struct .. end`. This is the only way to define functors.
+While a function can work with any order of formal arguments, putting
+common arguments make it more usable.  For example:
 
 ```
-module ID : sig
-  type t
+let sum     = List.fold_left (+) 0
+let default x = function
+  | None   -> x
+  | Some y -> y
 
-  val make: unit -> t
-  (** [make] creates a unique token *)
-
-  val equal: t -> t -> bool
-  (** [equal] is true, if and only if two tokens are the same *)
-end = struct
-  type t = unit ref
-  let make () = ref ()
-  let equal x y = x == y (* use pointer equality *)
-end
+let sum' xs  = xs |> List.map (default 0) |> sum
 ```
 
-* Add list of examples here
+Function `sum: int list -> int` computes the sum from a list of
+integers. It's definition is so concise because `List.fold_left` takes
+its list argument last. Likewise, `default` and `List.map` combine well
+because of the order of their arguments.
+
+The best argument order is not always clear - so this should be just a
+general consideration when writing code.
+
+## Functions - Pattern Matching
+
+Pattern matching is the preferred way to define functions. Patterns
+are easier to read and extend than if-then-else expressions. Consider
+matching multiple arguments at the same time to arrive at a short and
+un-nested function definition.
+
+The example below defines a binary tree and a function `sum` that sums
+up the nodes along a path in the tree. It uses pattern matching
+effectively by matching over two values (the current node, and the
+current position in the path) at the same time.
+
+```
+type 'a tree
+  = Empty
+  | Node of 'a tree * 'a * 'a tree
+
+type branch = Left | Right
+type path   = branch list
+
+let sum tree path =
+  let rec loop acc path tree = match path, tree with
+    | []          , _           -> acc
+    | _::_        , Empty       -> failwith "path too long"
+    | Left::path  , Node(l,n,r) -> loop (acc+n) path l
+    | Right::path , Node(l,n,r) -> loop (acc+n) path r
+  in
+    loop 0 path tree
+```
+
+## Functions - Data Flow
+
+The readability of code can often be improved by using the pipe operator
+`|>` because it allows functions to be written such that data flows from
+top to bottom and left to right.
+
+Consider the following function `numbers` and `numbers'` that compute a
+string from a list of optional numbers:
+
+```
+let xs = [Some 1; None; Some 2; None; None; Some 3; Some 4; Some 5] in
+
+let (++) x xs = match x with
+  | Some x -> x :: xs
+  | None   -> xs
+
+let numbers xs =
+  String.concat "," (List.map string_of_int (List.fold_right (++) xs [])
+
+let numbers' xs =
+  List.fold_right (++) xs []
+  |> List.map string_of_int
+  |> String.concat ", " ```
+```
+
+The definition of `numbers` is more traditional and `numbers'` uses the
+pipe operator. In the latter the data from the argument `xs` flows
+through the function definition from top to bottom and left to right.
+In the more traditional definition, data flows from right to left.
 
 
-### Avoid introducing new dependencies
-
-Introducing new dependencies on outside libraries needs to be well
-justified.
-
-With Opam it is easy to install libraries and to use them. It is usually
-better to use a well-established and maintained library than to roll
-your own. This is especially true for well-established protocols,
-formats and problems in general. But any new library also brings along
-the responsibility to watch its development.
-
-### Logging
 
 
-### Compare Functions
+
+
+## Functions - Avoid Deep Nesting
+
+Code that is deeply nested is hard to read and hard to test. This
+suggests that it should be restructured - probably by introducing new
+functions. Pattern matching is a another proven way to reduce the
+nesting of code.
+
+
+## Functions - Tail Recursion
+
+Recursive functions operating on large data structures need to be tail
+recursive as otherwise the runtime stack may overflow.
+
+While tail recursiveness is generally desirable, it is often not
+required because data is not large. For performance it is usually better
+to pay attention to allocation patterns than to tail recursion.
+
+Be aware that tail recursion can be inhibited by exceptions: the `loop`
+below is not tail recursive!
+
+```
+let read_lines inc =
+   let rec loop acc =
+     try
+       let l = input_line inc in
+       loop (l :: acc)
+     with End_of_file -> List.rev acc
+   in
+   loop []
+```
+
+To make it tail recursive, handling of values and exceptions need to be
+combined into one `match` expression (available since OCaml 4.02):
+
+```
+let read_lines io =
+  let rec loop acc =
+      match input_line io with
+      | l -> loop (l :: acc)
+      | exception End_of_file -> List.rev acc
+  in
+  loop []
+```
+
+Function calls can be annotated to receive a compiler warning if a call
+is not tail recursive as expected:
+
+```
+let read_lines io =
+  let rec loop acc =
+    try
+      let l = input_line io in
+      (loop [@tailcall]) (l :: acc)
+    with End_of_file -> List.rev acc
+  in
+  loop []
+```
+
+The problem with this is that one has to be aware of the problem in the
+first place to write such an annotation.
+
+
+## Resources and Exceptions: use finally
+
+Ensure that resources are de-allocated in the presence of exceptions.
+This is typically done with a function like `finally`:
+
+```
+let finally (f: unit -> 'a) (free: unit -> 'b) =
+  let res = try f () with exn -> free (); raise exn in
+  free ();
+  res
+
+let with_file path (f: in_channel -> 'a) =
+  let io = open_in path in
+  finally
+    (fun () -> f io)
+    (fun () -> close_in io)
+
+with_file "/etc/passwd" (fun io -> input_line io |> print_endline)
+```
+
+In the above code we make sure to close the file even if the function
+reading from it throws an exception. A function like `finally` should be
+already defined in existing projects so there is no need to re-implement
+it locally.
+
+Resources that need to be managed are not just files but can be
+anything like database and network connections or timers.
+
+
+## Compare Functions
 
 [OCaml] provides a generic [compare] function but it can give unexpected
 results when comparing complex values or not a desired order. This is
@@ -490,19 +632,49 @@ module Time = struct
 end
 ```
 
-### Tail Recursion
 
-Recursive functions operating on large data structures need to be tail
-recursive as otherwise the runtime stack may overflow.
+## Git - Commit Messages
 
-While tail recursiveness is generally desirable, it is often not
-required because data is not large. For performance it is usually better
-to pay attention to allocation patterns than to tail recursion.
+* The subject should express what the commit achieves
+* The body should provide context for the commit
+* Subject and body should be clearly separated and working independently
+* Commit messages must not exceed a line length of 80 characters
+* Commits should include a signature (`git commit -s`)
+
+Examples:
+
+* https://github.com/xapi-project/xenopsd/pull/415/commits/fb6da3e9f9d5c1a17ee5ab3a904e5d90306980a4
+* https://github.com/ocaml/ocaml/commit/63e1460a69758b029c2def42192f80faaac1b7b2
 
 
-### complexity
-### exceptions
-### commit messages
-### functions - argument order
-### functions - pattern matching
+## Use Pattern Matching for Value Destruction
+
+The readability of code is improved by using pattern matching rather
+than (neeply nested) if-then-else control flow. Multiple patterns can be
+matched at the same time.
+
+```
+type color = Red | Yellow | Green
+
+let wait = function (* good *)
+  | Red     -> seconds 30
+  | Yellow  -> seconds 10
+  | Green   -> seconds 0
+
+let wait color = (* bad *)
+  if color = Red then seconds 30
+  else if color = Yellow then seconds 10
+  else seconds 0
+```
+
+## Avoid introducing new dependencies
+
+Introducing new dependencies on outside libraries needs to be well
+justified.
+
+With Opam it is easy to install libraries and to use them. It is usually
+better to use a well-established and maintained library than to roll
+your own. This is especially true for well-established protocols,
+formats and problems in general. But any new library also brings along
+the responsibility to watch its development.
 
