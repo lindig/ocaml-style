@@ -10,6 +10,9 @@ violating these principles stands little chance of finding many readers.
 Likewise, this guide tries to help with the small structures in
 programming [OCaml] upon which we can hope to build bigger ones.
 
+File [README.html](README.html) is a self-contained HTML page of this
+document and includes a table of contents.
+
 [OCaml]:  https://www.ocaml.org/
 
 ## Other Resources
