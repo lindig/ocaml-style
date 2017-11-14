@@ -353,6 +353,27 @@ Between opening a module globally and not at all, several options exist.
 
   This is especially effective to access constructors that are defined
   inside a module
+  
+* Define a sub-module that is meant to be opened (locally), to be used sparingly:
+
+  ```
+  module M = struct
+     type +'a t
+     module Infix = struct
+       val (>>=) : 'a t -> ('a -> 'b t) -> 'b t
+     end
+     ...
+  end
+  ....
+  let foo =
+     let open M.Infix in
+     f x
+     >>= fun () ->
+     ...
+  ```
+  
+  This avoid bringing in all the names from `M` itself in scope,
+  it only brings in scope the very small number of operators defined by `M.Infix`
 
 
 ### Rationale
