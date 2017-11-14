@@ -42,6 +42,9 @@ document and includes a table of contents.
 
 * Most OCaml code bases uses 2 spaces per indentation level.
 
+* When making changes ensure that indentation is still correct after your change,
+  re-indenting as necessary, but not excessively.
+
 Rationale:
 
 * Overly long lines create problems when printing source code and when
@@ -52,6 +55,9 @@ Rationale:
 * [ocp-indent] is a proven way to re-establish consistent
   indentation while still leaving room for other aspects of code
   formatting.
+* When adding an 'if' expression it might be necessary to reindent the whole body of a function,
+  but avoid re-indenting the whole file, which causes merge conflicts with people working on
+  other branches, it is best to plan ahead and do such large scale changes as separate commits.
 
 [ocp-indent]: https://github.com/OCamlPro/ocp-indent
 
@@ -85,6 +91,9 @@ provide it: the why.
 * Unusual Algorithms and their complexity
 * Invariants when not expressed as assertions
 * Error handling
+* Basic examples on how to use the library
+* Known limitations
+* Short introduction to the technology covered by the library, if not obvious
 
 ### What not to Comment
 
@@ -101,6 +110,15 @@ provide it: the why.
 
 * [Mtime](https://github.com/dbuenzli/mtime/blob/master/src/mtime.mli)
   with [implementation](https://github.com/dbuenzli/mtime/blob/master/src/mtime.ml)
+  and [rendered documentation](http://erratique.ch/software/mtime/doc/Mtime)
+  
+* [Uunf](https://github.com/dbuenzli/uunf/blob/master/src/uunf.mli)
+  with [implementation](https://github.com/dbuenzli/uunf/blob/master/src/uunf.ml) and
+  [rendered documentation](http://erratique.ch/software/uunf/doc/Uunf)
+  
+* Introduction to the domain covered by the library, e.g. introduction to unicode in [Uucp](http://erratique.ch/software/uucp/doc/Uucp.html)
+
+* Documentation stored together with code: squeezed [design](https://github.com/xapi-project/squeezed/tree/master/doc/design) and [diagrams](https://github.com/xapi-project/squeezed/blob/169e2e3004082a129b95ed6184a0ab04d20b7f28/lib/memory.ml#L91-L117)
 
 ### Caveats
 
@@ -108,6 +126,11 @@ Code duplication is bad but copying comments is worse. Be very careful
 when copying comments to make sure they are not becoming misleading in a
 new context.
 
+### Viewing rendered documentation
+
+You can use `odig odoc && odig doc` to view the documentation of all installed packages.
+If your package uses jbuilder then you can also view the documentation of 
+the package you are working on with `jbuilder doc`.
 
 [ocamldoc]: http://caml.inria.fr/pub/docs/manual-ocaml/ocamldoc.html
 
@@ -128,12 +151,17 @@ is significant.
 General considerations:
 
 * Local names can be short, type variables very short.
+* Prefer short, but self-describing names in public interfaces.
 * Use scoping (let, modules) to keep the number of names in a scope small.
 * Avoid encoding the type into a name: `x_int` or `x_opt` is usually not
   better than `x`.
 * In a functional language like [OCaml], using `get` as part of a name
   is often redundant unless it involves obtaining a value from a database
   or file.
+* You may see auto-generated code use the style `.mIX_case` where `.MIX_case` was meant,
+  but record fields cannot start with capital letters.
+  Avoid this in code your write.
+* You can use longer names for type variables if it improves clarity, e.g. for phantom types.
 
 Order of declarations: in a module, typically the following order is
 maintained unless dependencies force a different order or mixing
@@ -240,6 +268,11 @@ end
 
 * Add list of examples here
 
+Interfaces not only help document code, but can also prevent needless recompilation 
+(at least when you are using bytecode).
+As an exception to this rule, if your module only defines signatures then prefer using
+a `.ml` file for this, otherwise either the `.mli` would just be a duplicate of the `.ml` file,
+or you'd have to use `.mli`-only modules which don't have good tooling support.
 
 ## Avoid Opening Modules Globally
 
@@ -325,6 +358,27 @@ Between opening a module globally and not at all, several options exist.
 
   This is especially effective to access constructors that are defined
   inside a module
+  
+* Define a sub-module that is meant to be opened (locally), to be used sparingly:
+
+  ```
+  module M = struct
+     type +'a t
+     module Infix = struct
+       val (>>=) : 'a t -> ('a -> 'b t) -> 'b t
+     end
+     ...
+  end
+  ....
+  let foo =
+     let open M.Infix in
+     f x
+     >>= fun () ->
+     ...
+  ```
+  
+  This avoid bringing in all the names from `M` itself in scope,
+  it only brings in scope the very small number of operators defined by `M.Infix`
 
 
 ### Rationale
@@ -352,7 +406,7 @@ Using `!=` and `==` for equality is probably wrong and you should use
 1. Structural equality, tested with `=` and `<>`. This compares the
    shape of two values and is typically the correct choice.
 
-2. Pointer equality, tested with `==` and `!=`. This compares the
+2. Physical equality (pointer equality), tested with `==` and `!=`. This compares the
    address in memory of two values. This is typically used in
    performance-oriented code. Pointer equality implies structural
    equality but not vice versa.
@@ -426,6 +480,19 @@ let error fmt = Printf.kprintf (fun msg -> Error msg) fmt
 Purely functional code is easiest to test. Therefore code should be as
 functional as possible and imperative code minimised.
 
+In order of preference the interface of a module should expose:
+ * immutable data structures and operations on them
+ 
+   Note that the implementation can use mutation if this makes the
+   implementation of the algorithm more natural, as long as it doesn't
+   "leak" the mutated variable by returning it or storing it outside local variables
+   
+ * idempotent API calls
+ 
+ If the nature of the API requires mutation (e.g. a database) make it idempotent.
+ The reason is that network/RPC calls may get interrupted before getting an answer,
+ and the caller may not know whether the call succeeded or not, so it can just retry.
+ If you make the retry a no-op it simplifies the logic on both sides.
 
 ## Functions - Argument Order
 
@@ -447,6 +514,8 @@ Function `sum: int list -> int` computes the sum from a list of
 integers. It's definition is so concise because `List.fold_left` takes
 its list argument last. Likewise, `default` and `List.map` combine well
 because of the order of their arguments.
+Usually operations on datastructures should always take the datastructure
+last to allow for the above concise data-flow usage.
 
 The best argument order is not always clear - so this should be just a
 general consideration when writing code.
@@ -577,6 +646,7 @@ let read_lines io =
 The problem with this is that one has to be aware of the problem in the
 first place to write such an annotation.
 
+Be aware that some functions from the standard library are not tail recursive (e.g. `List.map`).
 
 ## Resources and Exceptions: use finally
 
@@ -606,6 +676,9 @@ it locally.
 Resources that need to be managed are not just files but can be
 anything like database and network connections or timers.
 
+A more finer detail is that care should be taken not to destroy the backtrace
+of an exception if the code in finally (or functions called by it) 
+raise/catch exceptions of its own.
 
 ## Compare Functions
 
@@ -643,6 +716,7 @@ end
 * Subject and body should be clearly separated and working independently
 * Commit messages must not exceed a line length of 80 characters
 * Commits should include a signature (`git commit -s`)
+* Commit messages can use markdown if it helps clarity
 
 Examples:
 

@@ -623,49 +623,49 @@ body {
 <body>
     <h1>OCaml Towards Clarity and Grace</h1>
     <ul>
- <li><a href="#OCaml-Towards-Clarity-and-Grace">OCaml Towards Clarity and Grace</a>
+ <li><a href="#OCaml.Towards.Clarity.and.Grace">OCaml Towards Clarity and Grace</a>
  <ul>
-  <li><a href="#Other-Resources">Other Resources</a></li>
-  <li><a href="#Indentation-2c--Line-Length">Indentation, Line Length</a></li>
+  <li><a href="#Other.Resources">Other Resources</a></li>
+  <li><a href="#Indentation..Line.Length">Indentation, Line Length</a></li>
   <li><a href="#Comments">Comments</a>
   <ul>
-   <li><a href="#What-to-Comment">What to Comment</a></li>
-   <li><a href="#What-not-to-Comment">What not to Comment</a></li>
+   <li><a href="#What.to.Comment">What to Comment</a></li>
+   <li><a href="#What.not.to.Comment">What not to Comment</a></li>
    <li><a href="#Examples">Examples</a></li>
    <li><a href="#Caveats">Caveats</a></li>
+   <li><a href="#Viewing.rendered.documentation">Viewing rendered documentation</a></li>
   </ul>
   </li>
-  <li><a href="#Naming-and-Declarations">Naming and Declarations</a></li>
+  <li><a href="#Naming.and.Declarations">Naming and Declarations</a></li>
   <li><a href="#Scoping">Scoping</a></li>
   <li><a href="#Constants">Constants</a></li>
-  <li><a href="#Introduce-and-Document-Interfaces">Introduce and Document Interfaces</a></li>
-  <li><a href="#Avoid-Opening-Modules-Globally">Avoid Opening Modules Globally</a>
+  <li><a href="#Introduce.and.Document.Interfaces">Introduce and Document Interfaces</a></li>
+  <li><a href="#Avoid.Opening.Modules.Globally">Avoid Opening Modules Globally</a>
   <ul>
-   <li><a href="#Do-This-Instead">Do This Instead</a></li>
+   <li><a href="#Do.This.Instead">Do This Instead</a></li>
    <li><a href="#Rationale">Rationale</a></li>
   </ul>
   </li>
-  <li><a href="#Avoid-using-references">Avoid using references</a></li>
-  <li><a href="#Equality:--3c-code-3e--21--3d--3c--2f-code-3e--and--3c-code-3e--3d--3d--3c--2f-code-3e--vs--3c-code-3e--26-lt-3b--26-gt-3b--3c--2f-code-3e--and--3c-code-3e--3d--3c--2f-code-3e-">Equality: <code>!=</code> and <code>==</code> vs <code>&lt;&gt;</code> and <code>=</code></a></li>
-  <li><a href="#if-vs.-match--2d--use-of-semicolon">if vs. match - use of semicolon</a></li>
-  <li><a href="#Error-Messages-and-Error-Handling">Error Messages and Error Handling</a></li>
-  <li><a href="#Split-imperative-and-functional-code">Split imperative and functional code</a></li>
-  <li><a href="#Functions--2d--Argument-Order">Functions - Argument Order</a></li>
-  <li><a href="#Functions--2d--Pattern-Matching">Functions - Pattern Matching</a></li>
-  <li><a href="#Functions--2d--Data-Flow">Functions - Data Flow</a></li>
-  <li><a href="#Functions--2d--Avoid-Deep-Nesting">Functions - Avoid Deep Nesting</a></li>
-  <li><a href="#Functions--2d--Tail-Recursion">Functions - Tail Recursion</a></li>
-  <li><a href="#Resources-and-Exceptions:-use-finally">Resources and Exceptions: use finally</a></li>
-  <li><a href="#Compare-Functions">Compare Functions</a></li>
-  <li><a href="#Git--2d--Commit-Messages">Git - Commit Messages</a></li>
-  <li><a href="#Use-Pattern-Matching-for-Value-Destruction">Use Pattern Matching for Value Destruction</a></li>
-  <li><a href="#Avoid-introducing-new-dependencies">Avoid introducing new dependencies</a></li>
+  <li><a href="#Avoid.using.references">Avoid using references</a></li>
+  <li><a href="#Equality:..code.....code..and..code.....code..vs..code..lt..gt...code..and..code....code.">Equality: <code>!=</code> and <code>==</code> vs <code>&lt;&gt;</code> and <code>=</code></a></li>
+  <li><a href="#if.vs..match.-.use.of.semicolon">if vs. match - use of semicolon</a></li>
+  <li><a href="#Error.Messages.and.Error.Handling">Error Messages and Error Handling</a></li>
+  <li><a href="#Split.imperative.and.functional.code">Split imperative and functional code</a></li>
+  <li><a href="#Functions.-.Argument.Order">Functions - Argument Order</a></li>
+  <li><a href="#Functions.-.Pattern.Matching">Functions - Pattern Matching</a></li>
+  <li><a href="#Functions.-.Data.Flow">Functions - Data Flow</a></li>
+  <li><a href="#Functions.-.Avoid.Deep.Nesting">Functions - Avoid Deep Nesting</a></li>
+  <li><a href="#Functions.-.Tail.Recursion">Functions - Tail Recursion</a></li>
+  <li><a href="#Resources.and.Exceptions:.use.finally">Resources and Exceptions: use finally</a></li>
+  <li><a href="#Compare.Functions">Compare Functions</a></li>
+  <li><a href="#Git.-.Commit.Messages">Git - Commit Messages</a></li>
+  <li><a href="#Use.Pattern.Matching.for.Value.Destruction">Use Pattern Matching for Value Destruction</a></li>
+  <li><a href="#Avoid.introducing.new.dependencies">Avoid introducing new dependencies</a></li>
  </ul>
  </li>
 </ul>
 
-    <a name="OCaml-Towards-Clarity-and-Grace"></a>
-<h1>OCaml Towards Clarity and Grace</h1>
+    <h1 id="OCaml.Towards.Clarity.and.Grace">OCaml Towards Clarity and Grace</h1>
 
 <p>This is a guide towards writing better <a href="https://www.ocaml.org/">OCaml</a> code.  We all like to
 write <a href="https://www.ocaml.org/">OCaml</a> code that is correct, maintainable, efficient, and maybe
@@ -679,8 +679,7 @@ programming <a href="https://www.ocaml.org/">OCaml</a> upon which we can hope to
 <p>File <a href="README.html">README.html</a> is a self-contained HTML page of this
 document and includes a table of contents.</p>
 
-<a name="Other-Resources"></a>
-<h2>Other Resources</h2>
+<h2 id="Other.Resources">Other Resources</h2>
 
 <ul>
 <li><a href="https://www.seas.upenn.edu/~cis341/current/programming_style.shtml">Upenn</a>&rsquo;s style guide for student projects</li>
@@ -690,8 +689,7 @@ document and includes a table of contents.</p>
 </ul>
 
 
-<a name="Indentation-2c--Line-Length"></a>
-<h2>Indentation, Line Length</h2>
+<h2 id="Indentation..Line.Length">Indentation, Line Length</h2>
 
 <ul>
 <li><p>Indentation must always reflect the logic of a program.</p></li>
@@ -702,6 +700,8 @@ new code in particular.</p></li>
 <li><p>For new code, prefer spaces over tabs and use <a href="https://github.com/OCamlPro/ocp-indent">ocp-indent</a> to maintain
 consistent indentation. Note that <a href="https://github.com/OCamlPro/ocp-indent">ocp-indent</a> does not break up long lines.</p></li>
 <li><p>Most OCaml code bases uses 2 spaces per indentation level.</p></li>
+<li><p>When making changes ensure that indentation is still correct after your change,
+re-indenting as necessary, but not excessively.</p></li>
 </ul>
 
 
@@ -716,11 +716,13 @@ environment.</li>
 <li><a href="https://github.com/OCamlPro/ocp-indent">ocp-indent</a> is a proven way to re-establish consistent
 indentation while still leaving room for other aspects of code
 formatting.</li>
+<li>When adding an &lsquo;if&rsquo; expression it might be necessary to reindent the whole body of a function,
+but avoid re-indenting the whole file, which causes merge conflicts with people working on
+other branches, it is best to plan ahead and do such large scale changes as separate commits.</li>
 </ul>
 
 
-<a name="Comments"></a>
-<h2>Comments</h2>
+<h2 id="Comments">Comments</h2>
 
 <p>Comments generally go before the code they are referencing. The possible
 exception are declarations in interfaces (mli files, signatures) and
@@ -744,8 +746,7 @@ with. See the section about <a href="http://caml.inria.fr/pub/docs/manual-ocaml/
 always convey the reason behind a design. Comments have the role to
 provide it: the why.</p>
 
-<a name="What-to-Comment"></a>
-<h3>What to Comment</h3>
+<h3 id="What.to.Comment">What to Comment</h3>
 
 <ul>
 <li>The purpose of a module or functor</li>
@@ -755,11 +756,13 @@ provide it: the why.</p>
 <li>Unusual Algorithms and their complexity</li>
 <li>Invariants when not expressed as assertions</li>
 <li>Error handling</li>
+<li>Basic examples on how to use the library</li>
+<li>Known limitations</li>
+<li>Short introduction to the technology covered by the library, if not obvious</li>
 </ul>
 
 
-<a name="What-not-to-Comment"></a>
-<h3>What not to Comment</h3>
+<h3 id="What.not.to.Comment">What not to Comment</h3>
 
 <ul>
 <li>Purpose of a local let binding - the name should tell it</li>
@@ -767,8 +770,7 @@ provide it: the why.</p>
 </ul>
 
 
-<a name="Examples"></a>
-<h3>Examples</h3>
+<h3 id="Examples">Examples</h3>
 
 <ul>
 <li><p><a href="https://github.com/ocaml/ocaml/blob/trunk/stdlib/list.mli">Ocaml List</a>
@@ -776,19 +778,29 @@ The documentation of the standard list module. Each function is
 commented below its signature.</p></li>
 <li><p><a href="https://github.com/c-cube/ocaml-containers/blob/master/src/data/CCHashSet.mli">Container Hash Set</a></p></li>
 <li><p><a href="https://github.com/dbuenzli/mtime/blob/master/src/mtime.mli">Mtime</a>
-with <a href="https://github.com/dbuenzli/mtime/blob/master/src/mtime.ml">implementation</a></p></li>
+with <a href="https://github.com/dbuenzli/mtime/blob/master/src/mtime.ml">implementation</a>
+and <a href="http://erratique.ch/software/mtime/doc/Mtime">rendered documentation</a></p></li>
+<li><p><a href="https://github.com/dbuenzli/uunf/blob/master/src/uunf.mli">Uunf</a>
+with <a href="https://github.com/dbuenzli/uunf/blob/master/src/uunf.ml">implementation</a> and
+<a href="http://erratique.ch/software/uunf/doc/Uunf">rendered documentation</a></p></li>
+<li><p>Introduction to the domain covered by the library, e.g. introduction to unicode in <a href="http://erratique.ch/software/uucp/doc/Uucp.html">Uucp</a></p></li>
+<li><p>Documentation stored together with code: squeezed <a href="https://github.com/xapi-project/squeezed/tree/master/doc/design">design</a> and <a href="https://github.com/xapi-project/squeezed/blob/169e2e3004082a129b95ed6184a0ab04d20b7f28/lib/memory.ml#L91-L117">diagrams</a></p></li>
 </ul>
 
 
-<a name="Caveats"></a>
-<h3>Caveats</h3>
+<h3 id="Caveats">Caveats</h3>
 
 <p>Code duplication is bad but copying comments is worse. Be very careful
 when copying comments to make sure they are not becoming misleading in a
 new context.</p>
 
-<a name="Naming-and-Declarations"></a>
-<h2>Naming and Declarations</h2>
+<h3 id="Viewing.rendered.documentation">Viewing rendered documentation</h3>
+
+<p>You can use <code>odig odoc &amp;&amp; odig doc</code> to view the documentation of all installed packages.
+If your package uses jbuilder then you can also view the documentation of
+the package you are working on with <code>jbuilder doc</code>.</p>
+
+<h2 id="Naming.and.Declarations">Naming and Declarations</h2>
 
 <p><a href="https://www.ocaml.org/">OCaml</a> has a few conventions for names. In particular, capitalisation
 is significant.</p>
@@ -809,12 +821,17 @@ is significant.</p>
 
 <ul>
 <li>Local names can be short, type variables very short.</li>
+<li>Prefer short, but self-describing names in public interfaces.</li>
 <li>Use scoping (let, modules) to keep the number of names in a scope small.</li>
 <li>Avoid encoding the type into a name: <code>x_int</code> or <code>x_opt</code> is usually not
 better than <code>x</code>.</li>
 <li>In a functional language like <a href="https://www.ocaml.org/">OCaml</a>, using <code>get</code> as part of a name
 is often redundant unless it involves obtaining a value from a database
 or file.</li>
+<li>You may see auto-generated code use the style <code>.mIX_case</code> where <code>.MIX_case</code> was meant,
+but record fields cannot start with capital letters.
+Avoid this in code your write.</li>
+<li>You can use longer names for type variables if it improves clarity, e.g. for phantom types.</li>
 </ul>
 
 
@@ -849,8 +866,7 @@ end = struct
 end
 </code></pre>
 
-<a name="Scoping"></a>
-<h2>Scoping</h2>
+<h2 id="Scoping">Scoping</h2>
 
 <p>Use the module system to group values. It&rsquo;s quite common to define
 simple values that belong together and to indicate this in their names:</p>
@@ -872,8 +888,7 @@ end
 <p>A value can now be accessed like in <code>Option.debug</code>. A module simply used
 for grouping doesn&rsquo;t require an interface.</p>
 
-<a name="Constants"></a>
-<h2>Constants</h2>
+<h2 id="Constants">Constants</h2>
 
 <ul>
 <li>Avoid using magic constants as literals like <code>86400</code> for the number of
@@ -900,8 +915,7 @@ example in <code>1_000_000</code>.</p></li>
 
 <p>More details are in the <a href="http://caml.inria.fr/pub/docs/manual-ocaml/lex.html">Ocaml Manual</a>.</p>
 
-<a name="Introduce-and-Document-Interfaces"></a>
-<h2>Introduce and Document Interfaces</h2>
+<h2 id="Introduce.and.Document.Interfaces">Introduce and Document Interfaces</h2>
 
 <p>Module interfaces are the best way to document and control an
 implementation - employ them widely.</p>
@@ -933,8 +947,13 @@ end
 </ul>
 
 
-<a name="Avoid-Opening-Modules-Globally"></a>
-<h2>Avoid Opening Modules Globally</h2>
+<p>Interfaces not only help document code, but can also prevent needless recompilation
+(at least when you are using bytecode).
+As an exception to this rule, if your module only defines signatures then prefer using
+a <code>.ml</code> file for this, otherwise either the <code>.mli</code> would just be a duplicate of the <code>.ml</code> file,
+or you&rsquo;d have to use <code>.mli</code>-only modules which don&rsquo;t have good tooling support.</p>
+
+<h2 id="Avoid.Opening.Modules.Globally">Avoid Opening Modules Globally</h2>
 
 <p>For convenience, many developers open modules globally in order to gain
 access to functions without having to use qualified access. Below,
@@ -960,8 +979,7 @@ let main () =
 let () = main ()
 </code></pre>
 
-<a name="Do-This-Instead"></a>
-<h3>Do This Instead</h3>
+<h3 id="Do.This.Instead">Do This Instead</h3>
 
 <p>Between opening a module globally and not at all, several options exist.</p>
 
@@ -1010,11 +1028,29 @@ let sprintf = Printf.sprintf
 
 <p>This is especially effective to access constructors that are defined
 inside a module</p></li>
+<li><p>Define a sub-module that is meant to be opened (locally), to be used sparingly:</p>
+
+<pre><code>module M = struct
+   type +'a t
+   module Infix = struct
+     val (&gt;&gt;=) : 'a t -&gt; ('a -&gt; 'b t) -&gt; 'b t
+   end
+   ...
+end
+....
+let foo =
+   let open M.Infix in
+   f x
+   &gt;&gt;= fun () -&gt;
+   ...
+</code></pre>
+
+<p>This avoid bringing in all the names from <code>M</code> itself in scope,
+it only brings in scope the very small number of operators defined by <code>M.Infix</code></p></li>
 </ul>
 
 
-<a name="Rationale"></a>
-<h3>Rationale</h3>
+<h3 id="Rationale">Rationale</h3>
 
 <p>Opening a module introduces all its values and constructors into the
 local module. Since the definitions of these values and constructors are
@@ -1023,15 +1059,13 @@ support. While a developer might argue that tool support is available,
 it is not during reviews on GitHub or when looking at a printout. The
 problem is exaggerated when several modules are opened.</p>
 
-<a name="Avoid-using-references"></a>
-<h2>Avoid using references</h2>
+<h2 id="Avoid.using.references">Avoid using references</h2>
 
 <p>Most code does not require references. Introducing them should be well
 justified. In particular, using references to implement loops and
 similar local control flow is probably avoidable.</p>
 
-<a name="Equality:--3c-code-3e--21--3d--3c--2f-code-3e--and--3c-code-3e--3d--3d--3c--2f-code-3e--vs--3c-code-3e--26-lt-3b--26-gt-3b--3c--2f-code-3e--and--3c-code-3e--3d--3c--2f-code-3e-"></a>
-<h2>Equality: <code>!=</code> and <code>==</code> vs <code>&lt;&gt;</code> and <code>=</code></h2>
+<h2 id="Equality:..code.....code..and..code.....code..vs..code..lt..gt...code..and..code....code.">Equality: <code>!=</code> and <code>==</code> vs <code>&lt;&gt;</code> and <code>=</code></h2>
 
 <p>Using <code>!=</code> and <code>==</code> for equality is probably wrong and you should use
 <code>&lt;&gt;</code> and <code>=</code> instead.</p>
@@ -1041,15 +1075,14 @@ similar local control flow is probably avoidable.</p>
 <ol>
 <li><p>Structural equality, tested with <code>=</code> and <code>&lt;&gt;</code>. This compares the
 shape of two values and is typically the correct choice.</p></li>
-<li><p>Pointer equality, tested with <code>==</code> and <code>!=</code>. This compares the
+<li><p>Physical equality (pointer equality), tested with <code>==</code> and <code>!=</code>. This compares the
 address in memory of two values. This is typically used in
 performance-oriented code. Pointer equality implies structural
 equality but not vice versa.</p></li>
 </ol>
 
 
-<a name="if-vs.-match--2d--use-of-semicolon"></a>
-<h2>if vs. match - use of semicolon</h2>
+<h2 id="if.vs..match.-.use.of.semicolon">if vs. match - use of semicolon</h2>
 
 <p>Be aware that statement sequences require <code>begin</code>/<code>end</code> in <code>if</code>
 expressions.  <a href="https://www.ocaml.org/">OCaml</a> has some inconsistencies how it handles statement
@@ -1083,8 +1116,7 @@ end
 exasperated by incorrect indentation and by incremental changes to
 existing code.</p>
 
-<a name="Error-Messages-and-Error-Handling"></a>
-<h2>Error Messages and Error Handling</h2>
+<h2 id="Error.Messages.and.Error.Handling">Error Messages and Error Handling</h2>
 
 <ul>
 <li><p>For handling errors programmatically, appropriate error values should
@@ -1112,14 +1144,29 @@ next to each other.</p></li>
 </ul>
 
 
-<a name="Split-imperative-and-functional-code"></a>
-<h2>Split imperative and functional code</h2>
+<h2 id="Split.imperative.and.functional.code">Split imperative and functional code</h2>
 
 <p>Purely functional code is easiest to test. Therefore code should be as
 functional as possible and imperative code minimised.</p>
 
-<a name="Functions--2d--Argument-Order"></a>
-<h2>Functions - Argument Order</h2>
+<p>In order of preference the interface of a module should expose:
+ * immutable data structures and operations on them</p>
+
+<p>   Note that the implementation can use mutation if this makes the
+   implementation of the algorithm more natural, as long as it doesn&rsquo;t
+   &ldquo;leak&rdquo; the mutated variable by returning it or storing it outside local variables</p>
+
+<ul>
+<li>idempotent API calls</li>
+</ul>
+
+
+<p> If the nature of the API requires mutation (e.g. a database) make it idempotent.
+ The reason is that network/RPC calls may get interrupted before getting an answer,
+ and the caller may not know whether the call succeeded or not, so it can just retry.
+ If you make the retry a no-op it simplifies the logic on both sides.</p>
+
+<h2 id="Functions.-.Argument.Order">Functions - Argument Order</h2>
 
 <p>In a function definition, the most common arguments should come first.</p>
 
@@ -1137,13 +1184,14 @@ let sum' xs  = xs |&gt; List.map (default 0) |&gt; sum
 <p>Function <code>sum: int list -&gt; int</code> computes the sum from a list of
 integers. It&rsquo;s definition is so concise because <code>List.fold_left</code> takes
 its list argument last. Likewise, <code>default</code> and <code>List.map</code> combine well
-because of the order of their arguments.</p>
+because of the order of their arguments.
+Usually operations on datastructures should always take the datastructure
+last to allow for the above concise data-flow usage.</p>
 
 <p>The best argument order is not always clear - so this should be just a
 general consideration when writing code.</p>
 
-<a name="Functions--2d--Pattern-Matching"></a>
-<h2>Functions - Pattern Matching</h2>
+<h2 id="Functions.-.Pattern.Matching">Functions - Pattern Matching</h2>
 
 <p>Pattern matching is the preferred way to define functions. Patterns
 are easier to read and extend than if-then-else expressions. Consider
@@ -1172,8 +1220,7 @@ let sum tree path =
     loop 0 path tree
 </code></pre>
 
-<a name="Functions--2d--Data-Flow"></a>
-<h2>Functions - Data Flow</h2>
+<h2 id="Functions.-.Data.Flow">Functions - Data Flow</h2>
 
 <p>The readability of code can often be improved by using the pipe operator
 <code>|&gt;</code> because it allows functions to be written such that data flows from
@@ -1202,16 +1249,14 @@ pipe operator. In the latter the data from the argument <code>xs</code> flows
 through the function definition from top to bottom and left to right.
 In the more traditional definition, data flows from right to left.</p>
 
-<a name="Functions--2d--Avoid-Deep-Nesting"></a>
-<h2>Functions - Avoid Deep Nesting</h2>
+<h2 id="Functions.-.Avoid.Deep.Nesting">Functions - Avoid Deep Nesting</h2>
 
 <p>Code that is deeply nested is hard to read and hard to test. This
 suggests that it should be restructured - probably by introducing new
 functions. Pattern matching is a another proven way to reduce the
 nesting of code.</p>
 
-<a name="Functions--2d--Tail-Recursion"></a>
-<h2>Functions - Tail Recursion</h2>
+<h2 id="Functions.-.Tail.Recursion">Functions - Tail Recursion</h2>
 
 <p>Recursive functions operating on large data structures need to be tail
 recursive as otherwise the runtime stack may overflow.</p>
@@ -1261,8 +1306,9 @@ is not tail recursive as expected:</p>
 <p>The problem with this is that one has to be aware of the problem in the
 first place to write such an annotation.</p>
 
-<a name="Resources-and-Exceptions:-use-finally"></a>
-<h2>Resources and Exceptions: use finally</h2>
+<p>Be aware that some functions from the standard library are not tail recursive (e.g. <code>List.map</code>).</p>
+
+<h2 id="Resources.and.Exceptions:.use.finally">Resources and Exceptions: use finally</h2>
 
 <p>Ensure that resources are de-allocated in the presence of exceptions.
 This is typically done with a function like <code>finally</code>:</p>
@@ -1289,8 +1335,11 @@ it locally.</p>
 <p>Resources that need to be managed are not just files but can be
 anything like database and network connections or timers.</p>
 
-<a name="Compare-Functions"></a>
-<h2>Compare Functions</h2>
+<p>A more finer detail is that care should be taken not to destroy the backtrace
+of an exception if the code in finally (or functions called by it)
+raise/catch exceptions of its own.</p>
+
+<h2 id="Compare.Functions">Compare Functions</h2>
 
 <p><a href="https://www.ocaml.org/">OCaml</a> provides a generic [compare] function but it can give unexpected
 results when comparing complex values or not a desired order. This is
@@ -1317,8 +1366,7 @@ function.  Here is a recipe to define a custom compare function:</p>
 end
 </code></pre>
 
-<a name="Git--2d--Commit-Messages"></a>
-<h2>Git - Commit Messages</h2>
+<h2 id="Git.-.Commit.Messages">Git - Commit Messages</h2>
 
 <ul>
 <li>The subject should express what the commit achieves</li>
@@ -1326,6 +1374,7 @@ end
 <li>Subject and body should be clearly separated and working independently</li>
 <li>Commit messages must not exceed a line length of 80 characters</li>
 <li>Commits should include a signature (<code>git commit -s</code>)</li>
+<li>Commit messages can use markdown if it helps clarity</li>
 </ul>
 
 
@@ -1337,8 +1386,7 @@ end
 </ul>
 
 
-<a name="Use-Pattern-Matching-for-Value-Destruction"></a>
-<h2>Use Pattern Matching for Value Destruction</h2>
+<h2 id="Use.Pattern.Matching.for.Value.Destruction">Use Pattern Matching for Value Destruction</h2>
 
 <p>The readability of code is improved by using pattern matching rather
 than (neeply nested) if-then-else control flow. Multiple patterns can be
@@ -1357,8 +1405,7 @@ let wait color = (* bad *)
   else seconds 0
 </code></pre>
 
-<a name="Avoid-introducing-new-dependencies"></a>
-<h2>Avoid introducing new dependencies</h2>
+<h2 id="Avoid.introducing.new.dependencies">Avoid introducing new dependencies</h2>
 
 <p>Introducing new dependencies on outside libraries needs to be well
 justified.</p>
