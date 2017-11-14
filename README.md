@@ -268,6 +268,8 @@ end
 
 * Add list of examples here
 
+Interfaces not only help document code, but can also prevent needless recompilation 
+(at least when you are using bytecode).
 
 ## Avoid Opening Modules Globally
 
