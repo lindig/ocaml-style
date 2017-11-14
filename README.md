@@ -42,6 +42,9 @@ document and includes a table of contents.
 
 * Most OCaml code bases uses 2 spaces per indentation level.
 
+* When making changes ensure that indentation is still correct after your change,
+  re-indenting as necessary, but not excessively
+
 Rationale:
 
 * Overly long lines create problems when printing source code and when
@@ -52,6 +55,9 @@ Rationale:
 * [ocp-indent] is a proven way to re-establish consistent
   indentation while still leaving room for other aspects of code
   formatting.
+* When adding an 'if' expression it might be necessary to reindent the whole body of a function,
+  but avoid re-indenting the whole file, which causes merge conflicts with people working on
+  other branches, it is best to plan ahead and do such large scale changes as separate commits.
 
 [ocp-indent]: https://github.com/OCamlPro/ocp-indent
 
