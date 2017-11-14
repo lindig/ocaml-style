@@ -480,6 +480,19 @@ let error fmt = Printf.kprintf (fun msg -> Error msg) fmt
 Purely functional code is easiest to test. Therefore code should be as
 functional as possible and imperative code minimised.
 
+In order of preference the interface of a module should expose:
+ * immutable data structures and operations on them
+ 
+   Note that the implementation can use mutation if this makes the
+   implementation of the algorithm more natural, as long as it doesn't
+   "leak" the mutated variable by returning it or storing it outside local variables
+   
+ * idempotent API calls
+ 
+ If the nature of the API requires mutation (e.g. a database) make it idempotent.
+ The reason is that network/RPC calls may get interrupted before getting an answer,
+ and the caller may not know whether the call succeeded or not, so it can just retry.
+ If you make the retry a no-op it simplifies the logic on both sides.
 
 ## Functions - Argument Order
 
