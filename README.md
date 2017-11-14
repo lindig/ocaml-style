@@ -126,6 +126,11 @@ Code duplication is bad but copying comments is worse. Be very careful
 when copying comments to make sure they are not becoming misleading in a
 new context.
 
+### Viewing rendered documentation
+
+You can use `odig odoc && odig doc` to view the documentation of all installed packages.
+If your package uses jbuilder then you can also view the documentation of 
+the package you are working on with `jbuilder doc`.
 
 [ocamldoc]: http://caml.inria.fr/pub/docs/manual-ocaml/ocamldoc.html
 
