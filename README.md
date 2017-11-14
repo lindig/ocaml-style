@@ -646,6 +646,7 @@ let read_lines io =
 The problem with this is that one has to be aware of the problem in the
 first place to write such an annotation.
 
+Be aware that some functions from the standard library are not tail recursive (e.g. `List.map`).
 
 ## Resources and Exceptions: use finally
 
