@@ -676,6 +676,9 @@ it locally.
 Resources that need to be managed are not just files but can be
 anything like database and network connections or timers.
 
+A more finer detail is that care should be taken not to destroy the backtrace
+of an exception if the code in finally (or functions called by it) 
+raise/catch exceptions of its own.
 
 ## Compare Functions
 
