@@ -91,6 +91,9 @@ provide it: the why.
 * Unusual Algorithms and their complexity
 * Invariants when not expressed as assertions
 * Error handling
+* Basic examples on how to use the library
+* Known limitations
+* Short introduction to the technology covered by the library, if not obvious
 
 ### What not to Comment
 
@@ -107,6 +110,15 @@ provide it: the why.
 
 * [Mtime](https://github.com/dbuenzli/mtime/blob/master/src/mtime.mli)
   with [implementation](https://github.com/dbuenzli/mtime/blob/master/src/mtime.ml)
+  and [rendered documentation](http://erratique.ch/software/mtime/doc/Mtime)
+  
+* [Uunf](https://github.com/dbuenzli/uunf/blob/master/src/uunf.mli)
+  with [implementation](https://github.com/dbuenzli/uunf/blob/master/src/uunf.ml) and
+  [rendered documentation](http://erratique.ch/software/uunf/doc/Uunf)
+  
+* Introduction to the domain covered by the library, e.g. introduction to unicode in [Uucp](http://erratique.ch/software/uucp/doc/Uucp.html)
+
+* Documentation stored together with code: squeezed [design](https://github.com/xapi-project/squeezed/tree/master/doc/design) and [diagrams](https://github.com/xapi-project/squeezed/blob/169e2e3004082a129b95ed6184a0ab04d20b7f28/lib/memory.ml#L91-L117)
 
 ### Caveats
 
