@@ -406,7 +406,7 @@ Using `!=` and `==` for equality is probably wrong and you should use
 1. Structural equality, tested with `=` and `<>`. This compares the
    shape of two values and is typically the correct choice.
 
-2. Pointer equality, tested with `==` and `!=`. This compares the
+2. Physical equality (pointer equality), tested with `==` and `!=`. This compares the
    address in memory of two values. This is typically used in
    performance-oriented code. Pointer equality implies structural
    equality but not vice versa.
