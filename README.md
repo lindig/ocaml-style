@@ -151,6 +151,7 @@ is significant.
 General considerations:
 
 * Local names can be short, type variables very short.
+* Prefer short, but self-describing names in public interfaces
 * Use scoping (let, modules) to keep the number of names in a scope small.
 * Avoid encoding the type into a name: `x_int` or `x_opt` is usually not
   better than `x`.
@@ -160,6 +161,7 @@ General considerations:
 * You may see auto-generated code use the style `.mIX_case` where `.MIX_case` was meant,
   but record fields cannot start with capital letters.
   Avoid this in code your write.
+* You can use longer names for type variables if it improves clarity, e.g. for phantom types
 
 Order of declarations: in a module, typically the following order is
 maintained unless dependencies force a different order or mixing
