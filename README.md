@@ -157,6 +157,9 @@ General considerations:
 * In a functional language like [OCaml], using `get` as part of a name
   is often redundant unless it involves obtaining a value from a database
   or file.
+* You may see auto-generated code use the style `.mIX_case` where `.MIX_case` was meant,
+  but record fields cannot start with capital letters.
+  Avoid this in code your write.
 
 Order of declarations: in a module, typically the following order is
 maintained unless dependencies force a different order or mixing
