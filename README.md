@@ -270,6 +270,9 @@ end
 
 Interfaces not only help document code, but can also prevent needless recompilation 
 (at least when you are using bytecode).
+As an exception to this rule, if your module only defines signatures then prefer using
+a `.ml` file for this, otherwise either the `.mli` would just be a duplicate of the `.ml` file,
+or you'd have to use `.mli`-only modules which don't have good tooling support.
 
 ## Avoid Opening Modules Globally
 
