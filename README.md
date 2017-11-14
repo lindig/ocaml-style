@@ -79,7 +79,7 @@ provide it: the why.
 ### What to Comment
 
 * The purpose of a module or functor
-* The purpose of a value or function in an signature (interface)
+* The purpose of a value or function in a signature (interface)
 * The purpose of a type declaration or its components, if not obvious
 * The purpose of record components and variants in types, if not obvious
 * Unusual Algorithms and their complexity
@@ -127,7 +127,7 @@ is significant.
 
 General considerations:
 
-* Local names can be short, type variables vert short.
+* Local names can be short, type variables very short.
 * Use scoping (let, modules) to keep the number of names in a scope small.
 * Avoid encoding the type into a name: `x_int` or `x_opt` is usually not
   better than `x`.
@@ -423,7 +423,7 @@ let error fmt = Printf.kprintf (fun msg -> Error msg) fmt
 
 ## Split imperative and functional code
 
-Pureley functinal code is easiest to test. Therefore code should be as
+Purely functional code is easiest to test. Therefore code should be as
 functional as possible and imperative code minimised.
 
 
