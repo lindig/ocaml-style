@@ -716,6 +716,7 @@ end
 * Subject and body should be clearly separated and working independently
 * Commit messages must not exceed a line length of 80 characters
 * Commits should include a signature (`git commit -s`)
+* Commit messages can use markdown if it helps clarity
 
 Examples:
 
