@@ -43,7 +43,7 @@ document and includes a table of contents.
 * Most OCaml code bases uses 2 spaces per indentation level.
 
 * When making changes ensure that indentation is still correct after your change,
-  re-indenting as necessary, but not excessively
+  re-indenting as necessary, but not excessively.
 
 Rationale:
 
