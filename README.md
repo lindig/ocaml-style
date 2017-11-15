@@ -17,7 +17,7 @@ document and includes a table of contents.
 
 ## Other Resources
 
-* [OCaml Guidelines]
+* Official [OCaml Guidelines] - very detailed
 * [Upenn]'s style guide for student projects
 * [OCaml Tutorial]
 * [OCaml Manual]
@@ -28,7 +28,7 @@ document and includes a table of contents.
 [OCaml Tutorial]:   https://ocaml.org/learn/tutorials/guidelines.html
 [OCaml Manual]:     http://caml.inria.fr/pub/docs/manual-ocaml/index.html
 [Real World OCaml]: https://realworldocaml.org/
-[OCaml Guidelines]: [OCaml Guidelines] - very detailed
+[OCaml Guidelines]: https://ocaml.org/learn/tutorials/guidelines.html
 
 ## Guiding Principles
 
