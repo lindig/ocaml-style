@@ -21,11 +21,33 @@ document and includes a table of contents.
 * [OCaml Tutorial]
 * [OCaml Manual]
 * [Real World OCaml] Book
+* [Hammer Lab](https://github.com/hammerlab/style-guides/blob/master/ocaml.md)
 
 [Upenn]:            https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
 [OCaml Tutorial]:   https://ocaml.org/learn/tutorials/guidelines.html
 [OCaml Manual]:     http://caml.inria.fr/pub/docs/manual-ocaml/index.html
 [Real World OCaml]: https://realworldocaml.org/
+
+## Guiding Principles
+
+_This probably needs some discussion_
+
+* Code is more often read than written - make the life of the reader
+  easy
+* Don't fight the language, play to its strength
+* Less code is better, cryptic code is worse
+* Think ahead but avoid over-engineering
+* Strong cohesion, loose coupling
+* Make correctness as obvious as possible
+
+## Uncovered Topics
+
+* Polymorphic vs. Regular Variants
+* Objects
+* Functors
+* Threads
+* Locking for Concurrency
+* Type Identity Across Modules
 
 ## Indentation, Line Length
 
@@ -111,11 +133,11 @@ provide it: the why.
 * [Mtime](https://github.com/dbuenzli/mtime/blob/master/src/mtime.mli)
   with [implementation](https://github.com/dbuenzli/mtime/blob/master/src/mtime.ml)
   and [rendered documentation](http://erratique.ch/software/mtime/doc/Mtime)
-  
+
 * [Uunf](https://github.com/dbuenzli/uunf/blob/master/src/uunf.mli)
   with [implementation](https://github.com/dbuenzli/uunf/blob/master/src/uunf.ml) and
   [rendered documentation](http://erratique.ch/software/uunf/doc/Uunf)
-  
+
 * Introduction to the domain covered by the library, e.g. introduction to unicode in [Uucp](http://erratique.ch/software/uucp/doc/Uucp.html)
 
 * Documentation stored together with code: squeezed [design](https://github.com/xapi-project/squeezed/tree/master/doc/design) and [diagrams](https://github.com/xapi-project/squeezed/blob/169e2e3004082a129b95ed6184a0ab04d20b7f28/lib/memory.ml#L91-L117)
@@ -129,7 +151,7 @@ new context.
 ### Viewing rendered documentation
 
 You can use `odig odoc && odig doc` to view the documentation of all installed packages.
-If your package uses jbuilder then you can also view the documentation of 
+If your package uses jbuilder then you can also view the documentation of
 the package you are working on with `jbuilder doc`.
 
 [ocamldoc]: http://caml.inria.fr/pub/docs/manual-ocaml/ocamldoc.html
@@ -268,7 +290,7 @@ end
 
 * Add list of examples here
 
-Interfaces not only help document code, but can also prevent needless recompilation 
+Interfaces not only help document code, but can also prevent needless recompilation
 (at least when you are using bytecode).
 As an exception to this rule, if your module only defines signatures then prefer using
 a `.ml` file for this, otherwise either the `.mli` would just be a duplicate of the `.ml` file,
@@ -358,7 +380,7 @@ Between opening a module globally and not at all, several options exist.
 
   This is especially effective to access constructors that are defined
   inside a module
-  
+
 * Define a sub-module that is meant to be opened (locally), to be used sparingly:
 
   ```
@@ -376,7 +398,7 @@ Between opening a module globally and not at all, several options exist.
      >>= fun () ->
      ...
   ```
-  
+
   This avoid bringing in all the names from `M` itself in scope,
   it only brings in scope the very small number of operators defined by `M.Infix`
 
@@ -482,13 +504,13 @@ functional as possible and imperative code minimised.
 
 In order of preference the interface of a module should expose:
  * immutable data structures and operations on them
- 
+
    Note that the implementation can use mutation if this makes the
    implementation of the algorithm more natural, as long as it doesn't
    "leak" the mutated variable by returning it or storing it outside local variables
-   
+
  * idempotent API calls
- 
+
  If the nature of the API requires mutation (e.g. a database) make it idempotent.
  The reason is that network/RPC calls may get interrupted before getting an answer,
  and the caller may not know whether the call succeeded or not, so it can just retry.
@@ -677,7 +699,7 @@ Resources that need to be managed are not just files but can be
 anything like database and network connections or timers.
 
 A more finer detail is that care should be taken not to destroy the backtrace
-of an exception if the code in finally (or functions called by it) 
+of an exception if the code in finally (or functions called by it)
 raise/catch exceptions of its own.
 
 ## Compare Functions
