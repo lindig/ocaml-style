@@ -79,9 +79,11 @@ Rationale:
 * [ocp-indent] is a proven way to re-establish consistent
   indentation while still leaving room for other aspects of code
   formatting.
-* When adding an 'if' expression it might be necessary to reindent the whole body of a function,
-  but avoid re-indenting the whole file, which causes merge conflicts with people working on
-  other branches, it is best to plan ahead and do such large scale changes as separate commits.
+* When adding an `if` expression it might be necessary to reindent the
+  whole body of a function, but avoid re-indenting the whole file, which
+  causes merge conflicts with people working on other branches, it is
+  best to plan ahead and do such large scale changes as separate
+  commits.
 
 [ocp-indent]: https://github.com/OCamlPro/ocp-indent
 
@@ -182,10 +184,11 @@ General considerations:
 * In a functional language like [OCaml], using `get` as part of a name
   is often redundant unless it involves obtaining a value from a database
   or file.
-* You may see auto-generated code use the style `.mIX_case` where `.MIX_case` was meant,
-  but record fields cannot start with capital letters.
-  Avoid this in code your write.
-* You can use longer names for type variables if it improves clarity, e.g. for phantom types.
+* You may see auto-generated code use the style `.mIX_case` where
+  `.MIX_case` was meant, but record fields cannot start with capital
+  letters.  Avoid this in code your write.
+* You can use longer names for type variables if it improves clarity,
+  e.g. for phantom types.
 
 Order of declarations: in a module, typically the following order is
 maintained unless dependencies force a different order or mixing
@@ -292,11 +295,12 @@ end
 
 * Add list of examples here
 
-Interfaces not only help document code, but can also prevent needless recompilation
-(at least when you are using bytecode).
-As an exception to this rule, if your module only defines signatures then prefer using
-a `.ml` file for this, otherwise either the `.mli` would just be a duplicate of the `.ml` file,
-or you'd have to use `.mli`-only modules which don't have good tooling support.
+Interfaces not only help document code, but can also prevent needless
+recompilation (at least when you are using bytecode).  As an exception
+to this rule, if your module only defines signatures then prefer using a
+`.ml` file for this, otherwise either the `.mli` would just be a
+duplicate of the `.ml` file, or you'd have to use `.mli`-only modules
+which don't have good tooling support.
 
 ## Avoid Opening Modules Globally
 
@@ -513,10 +517,11 @@ In order of preference the interface of a module should expose:
 
  * idempotent API calls
 
- If the nature of the API requires mutation (e.g. a database) make it idempotent.
- The reason is that network/RPC calls may get interrupted before getting an answer,
- and the caller may not know whether the call succeeded or not, so it can just retry.
- If you make the retry a no-op it simplifies the logic on both sides.
+   If the nature of the API requires mutation (e.g. a database) make it
+   idempotent.  The reason is that network/RPC calls may get interrupted
+   before getting an answer, and the caller may not know whether the
+   call succeeded or not, so it can just retry.  If you make the retry a
+   no-op it simplifies the logic on both sides.
 
 ## Functions - Argument Order
 
