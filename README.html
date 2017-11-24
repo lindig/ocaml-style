@@ -623,52 +623,51 @@ body {
 <body>
     <h1>OCaml Towards Clarity and Grace</h1>
     <ul>
- <li><a href="#OCaml-Towards-Clarity-and-Grace">OCaml Towards Clarity and Grace</a>
+ <li><a href="#OCaml.Towards.Clarity.and.Grace">OCaml Towards Clarity and Grace</a>
  <ul>
-  <li><a href="#Other-Resources">Other Resources</a></li>
-  <li><a href="#Guiding-Principles">Guiding Principles</a></li>
-  <li><a href="#Uncovered-Topics">Uncovered Topics</a></li>
-  <li><a href="#Indentation-2c--Line-Length">Indentation, Line Length</a></li>
+  <li><a href="#Other.Resources">Other Resources</a></li>
+  <li><a href="#Guiding.Principles">Guiding Principles</a></li>
+  <li><a href="#Uncovered.Topics">Uncovered Topics</a></li>
+  <li><a href="#Indentation..Line.Length">Indentation, Line Length</a></li>
   <li><a href="#Comments">Comments</a>
   <ul>
-   <li><a href="#What-to-Comment">What to Comment</a></li>
-   <li><a href="#What-not-to-Comment">What not to Comment</a></li>
+   <li><a href="#What.to.Comment">What to Comment</a></li>
+   <li><a href="#What.not.to.Comment">What not to Comment</a></li>
    <li><a href="#Examples">Examples</a></li>
    <li><a href="#Caveats">Caveats</a></li>
-   <li><a href="#Viewing-rendered-documentation">Viewing rendered documentation</a></li>
+   <li><a href="#Viewing.rendered.documentation">Viewing rendered documentation</a></li>
   </ul>
   </li>
-  <li><a href="#Naming-and-Declarations">Naming and Declarations</a></li>
+  <li><a href="#Naming.and.Declarations">Naming and Declarations</a></li>
   <li><a href="#Scoping">Scoping</a></li>
   <li><a href="#Constants">Constants</a></li>
-  <li><a href="#Introduce-and-Document-Interfaces">Introduce and Document Interfaces</a></li>
-  <li><a href="#Avoid-Opening-Modules-Globally">Avoid Opening Modules Globally</a>
+  <li><a href="#Introduce.and.Document.Interfaces">Introduce and Document Interfaces</a></li>
+  <li><a href="#Avoid.Opening.Modules.Globally">Avoid Opening Modules Globally</a>
   <ul>
-   <li><a href="#Do-This-Instead">Do This Instead</a></li>
+   <li><a href="#Do.This.Instead">Do This Instead</a></li>
    <li><a href="#Rationale">Rationale</a></li>
   </ul>
   </li>
-  <li><a href="#Avoid-using-references">Avoid using references</a></li>
-  <li><a href="#Equality:--3c-code-3e--21--3d--3c--2f-code-3e--and--3c-code-3e--3d--3d--3c--2f-code-3e--vs--3c-code-3e--26-lt-3b--26-gt-3b--3c--2f-code-3e--and--3c-code-3e--3d--3c--2f-code-3e-">Equality: <code>!=</code> and <code>==</code> vs <code>&lt;&gt;</code> and <code>=</code></a></li>
-  <li><a href="#if-vs.-match--2d--use-of-semicolon">if vs. match - use of semicolon</a></li>
-  <li><a href="#Error-Messages-and-Error-Handling">Error Messages and Error Handling</a></li>
-  <li><a href="#Split-imperative-and-functional-code">Split imperative and functional code</a></li>
-  <li><a href="#Functions--2d--Argument-Order">Functions - Argument Order</a></li>
-  <li><a href="#Functions--2d--Pattern-Matching">Functions - Pattern Matching</a></li>
-  <li><a href="#Functions--2d--Data-Flow">Functions - Data Flow</a></li>
-  <li><a href="#Functions--2d--Avoid-Deep-Nesting">Functions - Avoid Deep Nesting</a></li>
-  <li><a href="#Functions--2d--Tail-Recursion">Functions - Tail Recursion</a></li>
-  <li><a href="#Resources-and-Exceptions:-use-finally">Resources and Exceptions: use finally</a></li>
-  <li><a href="#Compare-Functions">Compare Functions</a></li>
-  <li><a href="#Git--2d--Commit-Messages">Git - Commit Messages</a></li>
-  <li><a href="#Use-Pattern-Matching-for-Value-Destruction">Use Pattern Matching for Value Destruction</a></li>
-  <li><a href="#Avoid-introducing-new-dependencies">Avoid introducing new dependencies</a></li>
+  <li><a href="#Avoid.using.references">Avoid using references</a></li>
+  <li><a href="#Equality:..code.....code..and..code.....code..vs..code..lt..gt...code..and..code....code.">Equality: <code>!=</code> and <code>==</code> vs <code>&lt;&gt;</code> and <code>=</code></a></li>
+  <li><a href="#if.vs..match.-.use.of.semicolon">if vs. match - use of semicolon</a></li>
+  <li><a href="#Error.Messages.and.Error.Handling">Error Messages and Error Handling</a></li>
+  <li><a href="#Split.imperative.and.functional.code">Split imperative and functional code</a></li>
+  <li><a href="#Functions.-.Argument.Order">Functions - Argument Order</a></li>
+  <li><a href="#Functions.-.Pattern.Matching">Functions - Pattern Matching</a></li>
+  <li><a href="#Functions.-.Data.Flow">Functions - Data Flow</a></li>
+  <li><a href="#Functions.-.Avoid.Deep.Nesting">Functions - Avoid Deep Nesting</a></li>
+  <li><a href="#Functions.-.Tail.Recursion">Functions - Tail Recursion</a></li>
+  <li><a href="#Resources.and.Exceptions:.use.finally">Resources and Exceptions: use finally</a></li>
+  <li><a href="#Compare.Functions">Compare Functions</a></li>
+  <li><a href="#Git.-.Commit.Messages">Git - Commit Messages</a></li>
+  <li><a href="#Use.Pattern.Matching.for.Value.Destruction">Use Pattern Matching for Value Destruction</a></li>
+  <li><a href="#Avoid.introducing.new.dependencies">Avoid introducing new dependencies</a></li>
  </ul>
  </li>
 </ul>
 
-    <a name="OCaml-Towards-Clarity-and-Grace"></a>
-<h1>OCaml Towards Clarity and Grace</h1>
+    <h1 id="OCaml.Towards.Clarity.and.Grace">OCaml Towards Clarity and Grace</h1>
 
 <p>This is a guide towards writing better <a href="https://www.ocaml.org/">OCaml</a> code.  We all like to
 write <a href="https://www.ocaml.org/">OCaml</a> code that is correct, maintainable, efficient, and maybe
@@ -682,8 +681,7 @@ programming <a href="https://www.ocaml.org/">OCaml</a> upon which we can hope to
 <p>File <a href="README.html">README.html</a> is a self-contained HTML page of this
 document and includes a table of contents.</p>
 
-<a name="Other-Resources"></a>
-<h2>Other Resources</h2>
+<h2 id="Other.Resources">Other Resources</h2>
 
 <ul>
 <li>Official <a href="https://ocaml.org/learn/tutorials/guidelines.html">OCaml Guidelines</a> - very detailed</li>
@@ -695,8 +693,7 @@ document and includes a table of contents.</p>
 </ul>
 
 
-<a name="Guiding-Principles"></a>
-<h2>Guiding Principles</h2>
+<h2 id="Guiding.Principles">Guiding Principles</h2>
 
 <p><em>This probably needs some discussion</em></p>
 
@@ -711,8 +708,7 @@ easy</li>
 </ul>
 
 
-<a name="Uncovered-Topics"></a>
-<h2>Uncovered Topics</h2>
+<h2 id="Uncovered.Topics">Uncovered Topics</h2>
 
 <ul>
 <li>Polymorphic vs. Regular Variants</li>
@@ -724,8 +720,7 @@ easy</li>
 </ul>
 
 
-<a name="Indentation-2c--Line-Length"></a>
-<h2>Indentation, Line Length</h2>
+<h2 id="Indentation..Line.Length">Indentation, Line Length</h2>
 
 <ul>
 <li><p>Indentation must always reflect the logic of a program.</p></li>
@@ -760,8 +755,7 @@ commits.</li>
 </ul>
 
 
-<a name="Comments"></a>
-<h2>Comments</h2>
+<h2 id="Comments">Comments</h2>
 
 <p>Comments generally go before the code they are referencing. The possible
 exception are declarations in interfaces (mli files, signatures) and
@@ -785,8 +779,7 @@ with. See the section about <a href="http://caml.inria.fr/pub/docs/manual-ocaml/
 always convey the reason behind a design. Comments have the role to
 provide it: the why.</p>
 
-<a name="What-to-Comment"></a>
-<h3>What to Comment</h3>
+<h3 id="What.to.Comment">What to Comment</h3>
 
 <ul>
 <li>The purpose of a module or functor</li>
@@ -802,8 +795,7 @@ provide it: the why.</p>
 </ul>
 
 
-<a name="What-not-to-Comment"></a>
-<h3>What not to Comment</h3>
+<h3 id="What.not.to.Comment">What not to Comment</h3>
 
 <ul>
 <li>Purpose of a local let binding - the name should tell it</li>
@@ -811,8 +803,7 @@ provide it: the why.</p>
 </ul>
 
 
-<a name="Examples"></a>
-<h3>Examples</h3>
+<h3 id="Examples">Examples</h3>
 
 <ul>
 <li><p><a href="https://github.com/ocaml/ocaml/blob/trunk/stdlib/list.mli">Ocaml List</a>
@@ -830,22 +821,19 @@ with <a href="https://github.com/dbuenzli/uunf/blob/master/src/uunf.ml">implemen
 </ul>
 
 
-<a name="Caveats"></a>
-<h3>Caveats</h3>
+<h3 id="Caveats">Caveats</h3>
 
 <p>Code duplication is bad but copying comments is worse. Be very careful
 when copying comments to make sure they are not becoming misleading in a
 new context.</p>
 
-<a name="Viewing-rendered-documentation"></a>
-<h3>Viewing rendered documentation</h3>
+<h3 id="Viewing.rendered.documentation">Viewing rendered documentation</h3>
 
 <p>You can use <code>odig odoc &amp;&amp; odig doc</code> to view the documentation of all installed packages.
 If your package uses jbuilder then you can also view the documentation of
 the package you are working on with <code>jbuilder doc</code>.</p>
 
-<a name="Naming-and-Declarations"></a>
-<h2>Naming and Declarations</h2>
+<h2 id="Naming.and.Declarations">Naming and Declarations</h2>
 
 <p><a href="https://www.ocaml.org/">OCaml</a> has a few conventions for names. In particular, capitalisation
 is significant.</p>
@@ -903,42 +891,38 @@ typically named <code>t</code>:</p></li>
 </ul>
 
 
-<p><code>
-module Tree: sig
+<pre><code>module Tree: sig
   type 'a t
   val empty: 'a t
 end = struct
   type 'a t = Empty | Tree of 'a t * 'a * 'a t
   let empty = Empty
 end
-</code></p>
+</code></pre>
 
-<a name="Scoping"></a>
-<h2>Scoping</h2>
+<h2 id="Scoping">Scoping</h2>
 
 <p>Use the module system to group values. It&rsquo;s quite common to define
 simple values that belong together and to indicate this in their names:</p>
 
-<p><code>
-let option_debug     = false
+<pre><code>let option_debug     = false
 let option_verbosity = High
 let option_log       = stdout
-</code>
-It is better to let the module system do the work:</p>
+</code></pre>
 
-<p><code>
-module Option = struct
+<p>It is better to let the module system do the work:</p>
+
+<pre><code>module Option = struct
   let debug     = false
   let verbosity = High
   let log       = stdout
 end
-</code></p>
+</code></pre>
 
 <p>A value can now be accessed like in <code>Option.debug</code>. A module simply used
 for grouping doesn&rsquo;t require an interface.</p>
 
-<a name="Constants"></a>
-<h2>Constants</h2>
+<h2 id="Constants">Constants</h2>
 
 <ul>
 <li>Avoid using magic constants as literals like <code>86400</code> for the number of
@@ -946,13 +930,12 @@ seconds in a day. Constants should be let-bound to a name:</li>
 </ul>
 
 
-<p><code>
-let ( ** ) x y    = Int64.mul (Int64.of_int x) y
+<pre><code>let ( ** ) x y    = Int64.mul (Int64.of_int x) y
 let sec           = 1L
 let sec_per_min   = 60 ** sec
 let sec_per_hour  = 60 ** sec_per_min
 let sec_per_day   = 24 ** sec_per_hour
-</code></p>
+</code></pre>
 
 <ul>
 <li><p>For literals, picking the correct base can make them less magical:
@@ -966,8 +949,15 @@ example in <code>1_000_000</code>.</p></li>
 
 <p>More details are in the <a href="http://caml.inria.fr/pub/docs/manual-ocaml/lex.html">Ocaml Manual</a>.</p>
 
-<a name="Introduce-and-Document-Interfaces"></a>
-<h2>Introduce and Document Interfaces</h2>
+<ul>
+<li><p>When defining strings that need to contain lots of escaped quotes or backslashes (such as regular expressions),
+prefer to use the <code>{|...|}</code> form instead of <code>"..."</code> (see <a href="https://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec263">8.18 Quoted Strings</a>):</p>
+
+<p> e.g. use <code>{|["\]|}</code> instead of <code>"[\"\\]"</code></p></li>
+</ul>
+
+
+<h2 id="Introduce.and.Document.Interfaces">Introduce and Document Interfaces</h2>
 
 <p>Module interfaces are the best way to document and control an
 implementation - employ them widely.</p>
@@ -979,21 +969,20 @@ should hide implementation details and document the API.</p>
 interface <code>abc.mli</code>. In addition, a module can be part of a (file)
 module using <code>struct .. end</code>. This is the only way to define functors.</p>
 
-<p>```
-module ID : sig
-  type t</p>
+<pre><code>module ID : sig
+  type t
 
-<p>  val make: unit -> t
-  (<em>* [make] creates a unique token </em>)</p>
+  val make: unit -&gt; t
+  (** [make] creates a unique token *)
 
-<p>  val equal: t -> t -> bool
-  (<em><em> [equal] is true, if and only if two tokens are the same </em>)
+  val equal: t -&gt; t -&gt; bool
+  (** [equal] is true, if and only if two tokens are the same *)
 end = struct
   type t = unit ref
   let make () = ref ()
-  let equal x y = x == y (</em> use pointer equality *)
+  let equal x y = x == y (* use pointer equality *)
 end
-```</p>
+</code></pre>
 
 <ul>
 <li>Add list of examples here</li>
@@ -1007,36 +996,33 @@ to this rule, if your module only defines signatures then prefer using a
 duplicate of the <code>.ml</code> file, or you&rsquo;d have to use <code>.mli</code>-only modules
 which don&rsquo;t have good tooling support.</p>
 
-<a name="Avoid-Opening-Modules-Globally"></a>
-<h2>Avoid Opening Modules Globally</h2>
+<h2 id="Avoid.Opening.Modules.Globally">Avoid Opening Modules Globally</h2>
 
 <p>For convenience, many developers open modules globally in order to gain
 access to functions without having to use qualified access. Below,
 <code>Printf</code>, <code>List</code>, and <code>Sys</code> are opened in this way:</p>
 
-<p>```
-open Printf
+<pre><code>open Printf
 open List
-open Sys</p>
+open Sys
 
-<p>let rec join = function
-  | []      -> &ldquo;&rdquo;
-  | [x]     -> x
-  | [x;y]   -> x ^ &ldquo; and &rdquo; ^ y
-  | x::xs   -> x ^ &ldquo;, &rdquo;    ^ join xs</p>
+let rec join = function
+  | []      -&gt; ""
+  | [x]     -&gt; x
+  | [x;y]   -&gt; x ^ " and " ^ y
+  | x::xs   -&gt; x ^ ", "    ^ join xs
 
-<p>let main () =
+let main () =
   let argv = Array.to_list argv in
   let args = tl argv in
   match args with
-  | []        -> printf &ldquo;Hello, world!\n&rdquo;
-  | names     -> printf &ldquo;Hello, %s!\n&rdquo; (join names)</p>
+  | []        -&gt; printf "Hello, world!\n"
+  | names     -&gt; printf "Hello, %s!\n" (join names)
 
-<p>let () = main ()
-```</p>
+let () = main ()
+</code></pre>
 
-<a name="Do-This-Instead"></a>
-<h3>Do This Instead</h3>
+<h3 id="Do.This.Instead">Do This Instead</h3>
 
 <p>Between opening a module globally and not at all, several options exist.</p>
 
@@ -1045,78 +1031,69 @@ open Sys</p>
 best solution if we need few values from a module and only
 sporadically.</p>
 
-<p><code>
-let main () =
+<pre><code>let main () =
   let argv = Array.to_list Sys.argv in
   let args = List.tl argv in
   match args with
   | []        -&gt; Printf.printf "Hello, world!\n"
   | names     -&gt; Printf.printf "Hello, %s!\n" (join names)
-</code></p></li>
+</code></pre></li>
 <li><p>Introduce aliases to shorten long module and function names. This is
 almost always a good solution.</p>
 
-<p>```
-module L = List</p>
+<pre><code>module L = List
 
-<p>let printf  = Printf.printf
+let printf  = Printf.printf
 let sprintf = Printf.sprintf
-```</p></li>
+</code></pre></li>
 <li><p>Open a module locally with open</p>
 
 <p>Opening a module locally limits the scope for the open module:</p>
 
-<p>```
-let main () =
+<pre><code>let main () =
   let open Printf in
   let argv = Array.to_list Sys.argv in
   let args = List.tl argv in
   match args with
-  | []        -> printf &ldquo;Hello, world!\n&rdquo;
-  | names     -> printf &ldquo;Hello, %s!\n&rdquo; (join names)</p>
-
-<p>```</p></li>
+  | []        -&gt; printf "Hello, world!\n"
+  | names     -&gt; printf "Hello, %s!\n" (join names)
+</code></pre></li>
 <li><p>Open a module locally with Module.()</p>
 
-<p><code>
-Int64.(add (of_int x) 1_000_000L)
-</code></p>
+<pre><code>Int64.(add (of_int x) 1_000_000L)
+</code></pre>
 
 <p>The code above is another way of writing the code below. The module
 <code>Int64</code> is open inside the parentheses.</p>
 
-<p><code>
-Int64.add (Int64.of_int x) 1_000_000L
-</code></p>
+<pre><code>Int64.add (Int64.of_int x) 1_000_000L
+</code></pre>
 
 <p>This is especially effective to access constructors that are defined
 inside a module</p></li>
 <li><p>Define a sub-module that is meant to be opened (locally), to be used sparingly:</p>
 
-<p>```
-module M = struct
-   type +&lsquo;a t
+<pre><code>module M = struct
+   type +'a t
    module Infix = struct
-     val (>>=) : 'a t -> ('a -> 'b t) -> 'b t
+     val (&gt;&gt;=) : 'a t -&gt; ('a -&gt; 'b t) -&gt; 'b t
    end
-   &hellip;
+   ...
 end
-&hellip;.
+....
 let foo =
    let open M.Infix in
-   f x</p>
-
-<blockquote><blockquote><p>= fun () ->
-   &hellip;
-```</p></blockquote></blockquote>
+   f x
+   &gt;&gt;= fun () -&gt;
+   ...
+</code></pre>
 
 <p>This avoid bringing in all the names from <code>M</code> itself in scope,
 it only brings in scope the very small number of operators defined by <code>M.Infix</code></p></li>
 </ul>
 
 
-<a name="Rationale"></a>
-<h3>Rationale</h3>
+<h3 id="Rationale">Rationale</h3>
 
 <p>Opening a module introduces all its values and constructors into the
 local module. Since the definitions of these values and constructors are
@@ -1125,15 +1102,13 @@ support. While a developer might argue that tool support is available,
 it is not during reviews on GitHub or when looking at a printout. The
 problem is exaggerated when several modules are opened.</p>
 
-<a name="Avoid-using-references"></a>
-<h2>Avoid using references</h2>
+<h2 id="Avoid.using.references">Avoid using references</h2>
 
 <p>Most code does not require references. Introducing them should be well
 justified. In particular, using references to implement loops and
 similar local control flow is probably avoidable.</p>
 
-<a name="Equality:--3c-code-3e--21--3d--3c--2f-code-3e--and--3c-code-3e--3d--3d--3c--2f-code-3e--vs--3c-code-3e--26-lt-3b--26-gt-3b--3c--2f-code-3e--and--3c-code-3e--3d--3c--2f-code-3e-"></a>
-<h2>Equality: <code>!=</code> and <code>==</code> vs <code>&lt;&gt;</code> and <code>=</code></h2>
+<h2 id="Equality:..code.....code..and..code.....code..vs..code..lt..gt...code..and..code....code.">Equality: <code>!=</code> and <code>==</code> vs <code>&lt;&gt;</code> and <code>=</code></h2>
 
 <p>Using <code>!=</code> and <code>==</code> for equality is probably wrong and you should use
 <code>&lt;&gt;</code> and <code>=</code> instead.</p>
@@ -1150,45 +1125,41 @@ equality but not vice versa.</p></li>
 </ol>
 
 
-<a name="if-vs.-match--2d--use-of-semicolon"></a>
-<h2>if vs. match - use of semicolon</h2>
+<h2 id="if.vs..match.-.use.of.semicolon">if vs. match - use of semicolon</h2>
 
 <p>Be aware that statement sequences require <code>begin</code>/<code>end</code> in <code>if</code>
 expressions.  <a href="https://www.ocaml.org/">OCaml</a> has some inconsistencies how it handles statement
 sequences (containing <code>;</code>). Compare:</p>
 
-<p><code>
-match true with
+<pre><code>match true with
   | true -&gt; ()
   | false -&gt; print_endline "1"; print_endline "2"
 (* prints nothing *)
-</code>
-versus:</p>
+</code></pre>
 
-<p><code>
-if false then print_endline "1"; print_endline "2"
+<p>versus:</p>
+
+<pre><code>if false then print_endline "1"; print_endline "2"
 (* prints 2 *)
-</code></p>
+</code></pre>
 
 <p>A statement sequence inside an <code>if</code> or <code>else</code> branch must be grouped by
 <code>begin</code>/<code>end</code> or parentheses to be governed by the guard.</p>
 
-<p><code>
-if false then begin
+<pre><code>if false then begin
   print_endline "1";
   print_endline "2"
 end else begin
   print_endline "3";
   print_endline "4"
 end
-</code></p>
+</code></pre>
 
 <p>The danger of not realising what code is governed by an if-expression is
 exasperated by incorrect indentation and by incremental changes to
 existing code.</p>
 
-<a name="Error-Messages-and-Error-Handling"></a>
-<h2>Error Messages and Error Handling</h2>
+<h2 id="Error.Messages.and.Error.Handling">Error Messages and Error Handling</h2>
 
 <ul>
 <li><p>For handling errors programmatically, appropriate error values should
@@ -1203,10 +1174,9 @@ function that behaves like <code>Printf.sprintf</code>:</p></li>
 </ul>
 
 
-<p><code>
-type 'a t = Ok of 'a | Error of string
+<pre><code>type 'a t = Ok of 'a | Error of string
 let error fmt = Printf.kprintf (fun msg -&gt; Error msg) fmt
-</code></p>
+</code></pre>
 
 <ul>
 <li><p>Messages going into a log still must make sense in the context of many
@@ -1217,8 +1187,7 @@ next to each other.</p></li>
 </ul>
 
 
-<a name="Split-imperative-and-functional-code"></a>
-<h2>Split imperative and functional code</h2>
+<h2 id="Split.imperative.and.functional.code">Split imperative and functional code</h2>
 
 <p>Purely functional code is easiest to test. Therefore code should be as
 functional as possible and imperative code minimised.</p>
@@ -1241,22 +1210,20 @@ no-op it simplifies the logic on both sides.</p></li>
 </ul>
 
 
-<a name="Functions--2d--Argument-Order"></a>
-<h2>Functions - Argument Order</h2>
+<h2 id="Functions.-.Argument.Order">Functions - Argument Order</h2>
 
 <p>In a function definition, the most common arguments should come first.</p>
 
 <p>While a function can work with any order of formal arguments, putting
 common arguments make it more usable.  For example:</p>
 
-<p>```
-let sum     = List.fold_left (+) 0
+<pre><code>let sum     = List.fold_left (+) 0
 let default x = function
-  | None   -> x
-  | Some y -> y</p>
+  | None   -&gt; x
+  | Some y -&gt; y
 
-<p>let sum' xs  = xs |> List.map (default 0) |> sum
-```</p>
+let sum' xs  = xs |&gt; List.map (default 0) |&gt; sum
+</code></pre>
 
 <p>Function <code>sum: int list -&gt; int</code> computes the sum from a list of
 integers. It&rsquo;s definition is so concise because <code>List.fold_left</code> takes
@@ -1268,8 +1235,7 @@ last to allow for the above concise data-flow usage.</p>
 <p>The best argument order is not always clear - so this should be just a
 general consideration when writing code.</p>
 
-<a name="Functions--2d--Pattern-Matching"></a>
-<h2>Functions - Pattern Matching</h2>
+<h2 id="Functions.-.Pattern.Matching">Functions - Pattern Matching</h2>
 
 <p>Pattern matching is the preferred way to define functions. Patterns
 are easier to read and extend than if-then-else expressions. Consider
@@ -1281,26 +1247,24 @@ up the nodes along a path in the tree. It uses pattern matching
 effectively by matching over two values (the current node, and the
 current position in the path) at the same time.</p>
 
-<p>```
-type &lsquo;a tree
+<pre><code>type 'a tree
   = Empty
-  | Node of 'a tree * 'a * 'a tree</p>
+  | Node of 'a tree * 'a * 'a tree
 
-<p>type branch = Left | Right
-type path   = branch list</p>
+type branch = Left | Right
+type path   = branch list
 
-<p>let sum tree path =
+let sum tree path =
   let rec loop acc path tree = match path, tree with
-    | []          , _           -> acc
-    | <em>::</em>        , Empty       -> failwith &ldquo;path too long&rdquo;
-    | Left::path  , Node(l,n,r) -> loop (acc+n) path l
-    | Right::path , Node(l,n,r) -> loop (acc+n) path r
+    | []          , _           -&gt; acc
+    | _::_        , Empty       -&gt; failwith "path too long"
+    | Left::path  , Node(l,n,r) -&gt; loop (acc+n) path l
+    | Right::path , Node(l,n,r) -&gt; loop (acc+n) path r
   in
     loop 0 path tree
-```</p>
+</code></pre>
 
-<a name="Functions--2d--Data-Flow"></a>
-<h2>Functions - Data Flow</h2>
+<h2 id="Functions.-.Data.Flow">Functions - Data Flow</h2>
 
 <p>The readability of code can often be improved by using the pipe operator
 <code>|&gt;</code> because it allows functions to be written such that data flows from
@@ -1309,37 +1273,34 @@ top to bottom and left to right.</p>
 <p>Consider the following function <code>numbers</code> and <code>numbers'</code> that compute a
 string from a list of optional numbers:</p>
 
-<p>```
-let xs = [Some 1; None; Some 2; None; None; Some 3; Some 4; Some 5] in</p>
+<pre><code>let xs = [Some 1; None; Some 2; None; None; Some 3; Some 4; Some 5] in
 
-<p>let (++) x xs = match x with
-  | Some x -> x :: xs
-  | None   -> xs</p>
+let (++) x xs = match x with
+  | Some x -&gt; x :: xs
+  | None   -&gt; xs
 
-<p>let numbers xs =
-  String.concat &ldquo;,&rdquo; (List.map string_of_int (List.fold_right (++) xs [])</p>
+let numbers xs =
+  String.concat "," (List.map string_of_int (List.fold_right (++) xs [])
 
-<p>let numbers' xs =
+let numbers' xs =
   List.fold_right (++) xs []
-  |> List.map string_of_int
-  |> String.concat &ldquo;, &rdquo; <code>
-</code></p>
+  |&gt; List.map string_of_int
+  |&gt; String.concat ", " ```
+</code></pre>
 
 <p>The definition of <code>numbers</code> is more traditional and <code>numbers'</code> uses the
 pipe operator. In the latter the data from the argument <code>xs</code> flows
 through the function definition from top to bottom and left to right.
 In the more traditional definition, data flows from right to left.</p>
 
-<a name="Functions--2d--Avoid-Deep-Nesting"></a>
-<h2>Functions - Avoid Deep Nesting</h2>
+<h2 id="Functions.-.Avoid.Deep.Nesting">Functions - Avoid Deep Nesting</h2>
 
 <p>Code that is deeply nested is hard to read and hard to test. This
 suggests that it should be restructured - probably by introducing new
 functions. Pattern matching is a another proven way to reduce the
 nesting of code.</p>
 
-<a name="Functions--2d--Tail-Recursion"></a>
-<h2>Functions - Tail Recursion</h2>
+<h2 id="Functions.-.Tail.Recursion">Functions - Tail Recursion</h2>
 
 <p>Recursive functions operating on large data structures need to be tail
 recursive as otherwise the runtime stack may overflow.</p>
@@ -1351,8 +1312,7 @@ to pay attention to allocation patterns than to tail recursion.</p>
 <p>Be aware that tail recursion can be inhibited by exceptions: the <code>loop</code>
 below is not tail recursive!</p>
 
-<p><code>
-let read_lines inc =
+<pre><code>let read_lines inc =
    let rec loop acc =
      try
        let l = input_line inc in
@@ -1360,26 +1320,24 @@ let read_lines inc =
      with End_of_file -&gt; List.rev acc
    in
    loop []
-</code></p>
+</code></pre>
 
 <p>To make it tail recursive, handling of values and exceptions need to be
 combined into one <code>match</code> expression (available since OCaml 4.02):</p>
 
-<p><code>
-let read_lines io =
+<pre><code>let read_lines io =
   let rec loop acc =
       match input_line io with
       | l -&gt; loop (l :: acc)
       | exception End_of_file -&gt; List.rev acc
   in
   loop []
-</code></p>
+</code></pre>
 
 <p>Function calls can be annotated to receive a compiler warning if a call
 is not tail recursive as expected:</p>
 
-<p><code>
-let read_lines io =
+<pre><code>let read_lines io =
   let rec loop acc =
     try
       let l = input_line io in
@@ -1387,33 +1345,31 @@ let read_lines io =
     with End_of_file -&gt; List.rev acc
   in
   loop []
-</code></p>
+</code></pre>
 
 <p>The problem with this is that one has to be aware of the problem in the
 first place to write such an annotation.</p>
 
 <p>Be aware that some functions from the standard library are not tail recursive (e.g. <code>List.map</code>).</p>
 
-<a name="Resources-and-Exceptions:-use-finally"></a>
-<h2>Resources and Exceptions: use finally</h2>
+<h2 id="Resources.and.Exceptions:.use.finally">Resources and Exceptions: use finally</h2>
 
 <p>Ensure that resources are de-allocated in the presence of exceptions.
 This is typically done with a function like <code>finally</code>:</p>
 
-<p>```
-let finally (f: unit -> &lsquo;a) (free: unit -> 'b) =
-  let res = try f () with exn -> free (); raise exn in
+<pre><code>let finally (f: unit -&gt; 'a) (free: unit -&gt; 'b) =
+  let res = try f () with exn -&gt; free (); raise exn in
   free ();
-  res</p>
+  res
 
-<p>let with_file path (f: in_channel -> &lsquo;a) =
+let with_file path (f: in_channel -&gt; 'a) =
   let io = open_in path in
   finally
-    (fun () -> f io)
-    (fun () -> close_in io)</p>
+    (fun () -&gt; f io)
+    (fun () -&gt; close_in io)
 
-<p>with_file &ldquo;/etc/passwd&rdquo; (fun io -> input_line io |> print_endline)
-```</p>
+with_file "/etc/passwd" (fun io -&gt; input_line io |&gt; print_endline)
+</code></pre>
 
 <p>In the above code we make sure to close the file even if the function
 reading from it throws an exception. A function like <code>finally</code> should be
@@ -1427,37 +1383,34 @@ anything like database and network connections or timers.</p>
 of an exception if the code in finally (or functions called by it)
 raise/catch exceptions of its own.</p>
 
-<a name="Compare-Functions"></a>
-<h2>Compare Functions</h2>
+<h2 id="Compare.Functions">Compare Functions</h2>
 
 <p><a href="https://www.ocaml.org/">OCaml</a> provides a generic [compare] function but it can give unexpected
 results when comparing complex values or not a desired order. This is
 the reason that the [Map.Make] functor requires to define a compare
 function.  Here is a recipe to define a custom compare function:</p>
 
-<p>```
-module Time = struct
-  type &lsquo;a t =
+<pre><code>module Time = struct
+  type 'a t =
     { hour:     int
     ; minutes:  int
     ; seconds:  int
     ; info:     'a
-    }</p>
+    }
 
-<p>  let (&lt;?>) c (cmp,x,y) =
+  let (&lt;?&gt;) c (cmp,x,y) =
     if c = 0
     then cmp x y
-    else c</p>
+    else c
 
-<p>  let compare t1 t2 =
+  let compare t1 t2 =
     compare t1.hour t2.hour
-    &lt;?> (compare, t1.minutes, t2.minutes)
-    &lt;?> (compare, t1.seconds, t2.seconds)
+    &lt;?&gt; (compare, t1.minutes, t2.minutes)
+    &lt;?&gt; (compare, t1.seconds, t2.seconds)
 end
-```</p>
+</code></pre>
 
-<a name="Git--2d--Commit-Messages"></a>
-<h2>Git - Commit Messages</h2>
+<h2 id="Git.-.Commit.Messages">Git - Commit Messages</h2>
 
 <ul>
 <li>The subject should express what the commit achieves</li>
@@ -1477,29 +1430,26 @@ end
 </ul>
 
 
-<a name="Use-Pattern-Matching-for-Value-Destruction"></a>
-<h2>Use Pattern Matching for Value Destruction</h2>
+<h2 id="Use.Pattern.Matching.for.Value.Destruction">Use Pattern Matching for Value Destruction</h2>
 
 <p>The readability of code is improved by using pattern matching rather
 than (neeply nested) if-then-else control flow. Multiple patterns can be
 matched at the same time.</p>
 
-<p>```
-type color = Red | Yellow | Green</p>
+<pre><code>type color = Red | Yellow | Green
 
-<p>let wait = function (<em> good </em>)
-  | Red     -> seconds 30
-  | Yellow  -> seconds 10
-  | Green   -> seconds 0</p>
+let wait = function (* good *)
+  | Red     -&gt; seconds 30
+  | Yellow  -&gt; seconds 10
+  | Green   -&gt; seconds 0
 
-<p>let wait color = (<em> bad </em>)
+let wait color = (* bad *)
   if color = Red then seconds 30
   else if color = Yellow then seconds 10
   else seconds 0
-```</p>
+</code></pre>
 
-<a name="Avoid-introducing-new-dependencies"></a>
-<h2>Avoid introducing new dependencies</h2>
+<h2 id="Avoid.introducing.new.dependencies">Avoid introducing new dependencies</h2>
 
 <p>Introducing new dependencies on outside libraries needs to be well
 justified.</p>

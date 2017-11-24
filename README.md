@@ -264,6 +264,10 @@ let sec_per_day   = 24 ** sec_per_hour
 
 More details are in the [Ocaml Manual](http://caml.inria.fr/pub/docs/manual-ocaml/lex.html).
 
+* When defining strings that need to contain lots of escaped quotes or backslashes (such as regular expressions),
+  prefer to use the `{|...|}` form instead of `"..."` (see [8.18 Quoted Strings](https://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec263)):
+  
+   e.g. use `{|["\]|}` instead of `"[\"\\]"`
 
 ## Introduce and Document Interfaces
 
