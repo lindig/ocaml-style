@@ -44,7 +44,6 @@ _This probably needs some discussion_
 
 ## Uncovered Topics
 
-* Polymorphic vs. Regular Variants
 * Objects
 * Functors
 * Threads
@@ -176,7 +175,8 @@ is significant.
 
 General considerations:
 
-* Local names can be short, type variables very short.
+* Local names can be short, type variables very short. In general, the
+  lenght of a name should be proportional to the size of its scope.
 * Prefer short, but self-describing names in public interfaces.
 * Use scoping (let, modules) to keep the number of names in a scope small.
 * Avoid encoding the type into a name: `x_int` or `x_opt` is usually not
@@ -305,6 +305,27 @@ to this rule, if your module only defines signatures then prefer using a
 `.ml` file for this, otherwise either the `.mli` would just be a
 duplicate of the `.ml` file, or you'd have to use `.mli`-only modules
 which don't have good tooling support.
+
+## Polymorphic vs. Regular Variants
+
+[Ocaml] has two kinds of variants: regular and polymorphic variants:
+
+```
+type colour
+  = Red   of float
+  | Blue  of float
+  | Green of float    (* regular      *)
+
+let blue = Blue 1.0
+
+let blue' = `blue 0.1 (* polymorphic, no declaration requited *)
+```
+
+Use regular variants by default. Polymorphic don't require a type
+declaration, which makes them flexible but also difficult to debug and
+they lead to complicated inferred types. They have their use case in
+specific use cases but they should not be used simply to avoid a type
+declaration.
 
 ## Avoid Opening Modules Globally
 
