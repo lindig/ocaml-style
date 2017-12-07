@@ -44,7 +44,6 @@ _This probably needs some discussion_
 
 ## Uncovered Topics
 
-* Objects
 * Functors
 * Threads
 * Locking for Concurrency
@@ -141,7 +140,8 @@ provide it: the why.
   with [implementation](https://github.com/dbuenzli/uunf/blob/master/src/uunf.ml) and
   [rendered documentation](http://erratique.ch/software/uunf/doc/Uunf)
 
-* Introduction to the domain covered by the library, e.g. introduction to unicode in [Uucp](http://erratique.ch/software/uucp/doc/Uucp.html)
+* Introduction to the domain covered by the library, e.g. introduction
+  to unicode in [Uucp](http://erratique.ch/software/uucp/doc/Uucp.html)
 
 * Documentation stored together with code: squeezed [design](https://github.com/xapi-project/squeezed/tree/master/doc/design) and [diagrams](https://github.com/xapi-project/squeezed/blob/169e2e3004082a129b95ed6184a0ab04d20b7f28/lib/memory.ml#L91-L117)
 
@@ -762,6 +762,17 @@ module Time = struct
 end
 ```
 
+# Objects
+
+[OCaml] has an [object
+system](http://caml.inria.fr/pub/docs/manual-ocaml/objectexamples.html).
+It should not be used by default. Since it was introduced, the language
+gained a number of features that make using objects less convincing. In
+particular, [OCaml] supports modules as first-class values. Almost all
+libraries in the [OCaml]/[Opam] ecosystem use a functional style and
+don't provide a class hierrachy.
+
+[Opam]: http://opam.ocaml.org
 
 ## Git - Commit Messages
 
