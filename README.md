@@ -568,11 +568,19 @@ Function `sum: int list -> int` computes the sum from a list of
 integers. It's definition is so concise because `List.fold_left` takes
 its list argument last. Likewise, `default` and `List.map` combine well
 because of the order of their arguments.
-Usually operations on datastructures should always take the datastructure
-last to allow for the above concise data-flow usage.
+Usually operations on data structures should always take the data
+structure last to allow for the above concise data-flow usage.
 
 The best argument order is not always clear - so this should be just a
 general consideration when writing code.
+
+* Partial application: arguments more likely to be static usually appear
+  before other arguments in order to facilitate partial application.
+
+* Most usual order: where an operation represents a well-known
+  mathematical function on more than one data structure, the arguments
+  are chosen to match the most usual argument order for the function.
+
 
 ## Functions - Pattern Matching
 
