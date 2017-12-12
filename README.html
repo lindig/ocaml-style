@@ -1297,11 +1297,20 @@ let default x = function
 integers. It&rsquo;s definition is so concise because <code>List.fold_left</code> takes
 its list argument last. Likewise, <code>default</code> and <code>List.map</code> combine well
 because of the order of their arguments.
-Usually operations on datastructures should always take the datastructure
-last to allow for the above concise data-flow usage.</p>
+Usually operations on data structures should always take the data
+structure last to allow for the above concise data-flow usage.</p>
 
 <p>The best argument order is not always clear - so this should be just a
 general consideration when writing code.</p>
+
+<ul>
+<li><p>Partial application: arguments more likely to be static usually appear
+before other arguments in order to facilitate partial application.</p></li>
+<li><p>Most usual order: where an operation represents a well-known
+mathematical function on more than one data structure, the arguments
+are chosen to match the most usual argument order for the function.</p></li>
+</ul>
+
 
 <a name="Functions--2d--Pattern-Matching"></a>
 <h2>Functions - Pattern Matching</h2>
