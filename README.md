@@ -721,7 +721,7 @@ function.  Here is a recipe to define a custom compare function:
         <?> (compare, t1.seconds, t2.seconds)
     end
 
-# Objects
+## Objects
 
 [OCaml] has an [object
 system](http://caml.inria.fr/pub/docs/manual-ocaml/objectexamples.html).
