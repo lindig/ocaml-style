@@ -684,9 +684,9 @@ combined into one `match` expression (available since OCaml 4.02):
 ```
 let read_lines io =
   let rec loop acc =
-      match input_line io with
-      | l -> loop (l :: acc)
-      | exception End_of_file -> List.rev acc
+    match input_line io with
+    | l -> loop (l :: acc)
+    | exception End_of_file -> List.rev acc
   in
   loop []
 ```
