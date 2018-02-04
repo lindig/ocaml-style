@@ -176,7 +176,7 @@ is significant.
 General considerations:
 
 * Local names can be short, type variables very short. In general, the
-  lenght of a name should be proportional to the size of its scope.
+  length of a name should be proportional to the size of its scope.
 * Prefer short, but self-describing names in public interfaces.
 * Use scoping (let, modules) to keep the number of names in a scope small.
 * Avoid encoding the type into a name: `x_int` or `x_opt` is usually not
