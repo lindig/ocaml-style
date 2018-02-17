@@ -241,11 +241,11 @@ for grouping doesn't require an interface.
 * Avoid using magic constants as literals like `86400` for the number of
   seconds in a day. Constants should be let-bound to a name:
 
-    let ( ** ) x y    = Int64.mul (Int64.of_int x) y
-    let sec           = 1L
-    let sec_per_min   = 60 ** sec
-    let sec_per_hour  = 60 ** sec_per_min
-    let sec_per_day   = 24 ** sec_per_hour
+      let ( ** ) x y    = Int64.mul (Int64.of_int x) y
+      let sec           = 1L
+      let sec_per_min   = 60 ** sec
+      let sec_per_hour  = 60 ** sec_per_min
+      let sec_per_day   = 24 ** sec_per_hour
 
 * For literals, picking the correct base can make them less magical:
   compare `255` (decimal) with `0xff` (hexadecimal) or `0b111_1111`
