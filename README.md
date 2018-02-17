@@ -10,8 +10,50 @@ violating these principles stands little chance of finding many readers.
 Likewise, this guide tries to help with the small structures in
 programming [OCaml] upon which we can hope to build bigger ones.
 
-File [README.html](README.html) is a self-contained HTML page of this
-document and includes a table of contents.
+<details>
+<summary>Table of content</summary>
+
+## Table of Contents
+
+* [OCaml Towards Clarity and Grace](#ocaml-towards-clarity-and-grace)
+  * [Other Resources](#other-resources)
+  * [Guiding Principles](#guiding-principles)
+  * [Uncovered Topics](#uncovered-topics)
+  * [Indentation, Line Length](#indentation-line-length)
+  * [Comments](#comments)
+    * [What to Comment](#what-to-comment)
+    * [What not to Comment](#what-not-to-comment)
+    * [Examples](#examples)
+    * [Caveats](#caveats)
+    * [Viewing rendered documentation](#viewing-rendered-documentation)
+  * [Naming and Declarations](#naming-and-declarations)
+  * [Scoping](#scoping)
+  * [Constants](#constants)
+  * [Introduce and Document Interfaces](#introduce-and-document-interfaces)
+  * [Polymorphic vs\. Regular Variants](#polymorphic-vs-regular-variants)
+  * [Avoid Opening Modules Globally](#avoid-opening-modules-globally)
+    * [Do This Instead](#do-this-instead)
+    * [Rationale](#rationale)
+  * [Avoid using references](#avoid-using-references)
+  * [Equality: \!= and == vs &lt;&gt; and =](#equality--and--vs--and-)
+  * [if vs\. match \- use of semicolon](#if-vs-match---use-of-semicolon)
+  * [Error Messages and Error Handling](#error-messages-and-error-handling)
+  * [Split imperative and functional code](#split-imperative-and-functional-code)
+  * [Functions \- Argument Order](#functions---argument-order)
+  * [Functions \- Pattern Matching](#functions---pattern-matching)
+  * [Functions \- Data Flow](#functions---data-flow)
+  * [Functions \- Avoid Deep Nesting](#functions---avoid-deep-nesting)
+  * [Functions \- Tail Recursion](#functions---tail-recursion)
+  * [Resources and Exceptions: use finally](#resources-and-exceptions-use-finally)
+  * [Compare Functions](#compare-functions)
+  * [Objects](#objects)
+  * [Git \- Commit Messages](#git---commit-messages)
+  * [Use Pattern Matching for Value Destruction](#use-pattern-matching-for-value-destruction)
+  * [Avoid introducing new dependencies](#avoid-introducing-new-dependencies)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+</details>
+
 
 [OCaml]:  https://www.ocaml.org/
 
