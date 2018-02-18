@@ -681,7 +681,7 @@ let numbers xs =
 let numbers' xs =
   List.fold_right (++) xs []
   |> List.map string_of_int
-  |> String.concat ", " ```
+  |> String.concat ", "
 ```
 
 The definition of `numbers` is more traditional and `numbers'` uses the
@@ -795,6 +795,9 @@ raise/catch exceptions of its own.
 results when comparing complex values or not a desired order. This is
 the reason that the [Map.Make] functor requires to define a compare
 function.  Here is a recipe to define a custom compare function:
+
+[Map.Make]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/Map.html
+[compare]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html
 
 ```ocaml
 module Time = struct
