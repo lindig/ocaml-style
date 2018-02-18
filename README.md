@@ -11,7 +11,7 @@ Likewise, this guide tries to help with the small structures in
 programming [OCaml] upon which we can hope to build bigger ones.
 
 <details>
-<summary>Table of content</summary>
+<summary>Table of Contents</summary>
 
 ## Table of Contents
 
@@ -168,7 +168,7 @@ provide it: the why.
 
 ### Examples
 
-* [Ocaml List](https://github.com/ocaml/ocaml/blob/trunk/stdlib/list.mli)
+* [OCaml List](https://github.com/ocaml/ocaml/blob/trunk/stdlib/list.mli)
   The documentation of the standard list module. Each function is
   commented below its signature.
 
@@ -290,14 +290,14 @@ for grouping doesn't require an interface.
       let sec_per_day   = 24 ** sec_per_hour
 
 * For literals, picking the correct base can make them less magical:
-  compare `255` (decimal) with `0xff` (hexadecimal) or `0b111_1111`
+  compare `255` (decimal) with `0xff` (hexadecimal) or `0b1111_1111`
   (binary).
 
 * Structure long literal numbers with underscores for
   readability as in `0b1111_1111` above. It works in all bases, like for
   example in `1_000_000`.
 
-More details are in the [Ocaml Manual](http://caml.inria.fr/pub/docs/manual-ocaml/lex.html).
+More details are in the [OCaml Manual](http://caml.inria.fr/pub/docs/manual-ocaml/lex.html).
 
 * When defining strings that need to contain lots of escaped quotes or backslashes (such as regular expressions),
   prefer to use the `{|...|}` form instead of `"..."` (see [8.18 Quoted Strings](https://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec263)):
@@ -341,7 +341,7 @@ which don't have good tooling support.
 
 ## Polymorphic vs. Regular Variants
 
-[Ocaml] has two kinds of variants: regular and polymorphic variants:
+[OCaml] has two kinds of variants: regular and polymorphic variants:
 
     type colour
       = Red   of float
@@ -521,7 +521,7 @@ existing code.
 * Log messages are typically created from strings. [OCaml] defines the
   following strings to report the location of an error: `__LOC__`,
   `__FILE__`, `__LINE__`, `__MODULE__` and a few more -- see
-  [Ocaml Pervasives](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)
+  [OCaml Pervasives](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)
 
 * Constructing log and error messages can be made simpler by defining a
   function that behaves like `Printf.sprintf`:
