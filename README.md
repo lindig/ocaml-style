@@ -73,7 +73,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 [Upenn]:            https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
 [OCaml Tutorial]:   https://ocaml.org/learn/tutorials/guidelines.html
 [OCaml Manual]:     http://caml.inria.fr/pub/docs/manual-ocaml/index.html
-[Real World OCaml]: https://realworldocaml.org/
+[Real World OCaml]: https://dev.realworldocaml.org/
 [OCaml Guidelines]: https://ocaml.org/learn/tutorials/guidelines.html
 
 ## Guiding Principles
