@@ -10,6 +10,10 @@ violating these principles stands little chance of finding many readers.
 Likewise, this guide tries to help with the small structures in
 programming [OCaml] upon which we can hope to build bigger ones.
 
+*I am happy to accept more material and to include critical discussion of
+the recommendations already in place. [Uncovered
+Topics](#uncovered-topics) is a place to record desirable topics.*
+
 <details>
 <summary>Table of Contents</summary>
 
