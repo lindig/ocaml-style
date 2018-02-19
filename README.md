@@ -812,17 +812,18 @@ module Time = struct
     ; info:     'a
     }
 
-  let (<?>) c (cmp,x,y) =
-    if c = 0
-    then cmp x y
-    else c
+  let (<?>) a b =
+    if a = 0 then b else a
 
-  let compare t1 t2 =
-    compare t1.hour t2.hour
-    <?> (compare, t1.minutes, t2.minutes)
-    <?> (compare, t1.seconds, t2.seconds)
+  let compare a b =
+        compare a.hour    b.hour
+    <?> compare a.minutes b.minutes
+    <?> compare a.seconds b.seconds
+    <?> 0
 end
 ```
+
+This relies on the left-associativity of the infix `<?>` operator.
 
 ## Objects
 
@@ -832,7 +833,7 @@ It should not be used by default. Since it was introduced, the language
 gained a number of features that make using objects less convincing. In
 particular, [OCaml] supports modules as first-class values. Almost all
 libraries in the [OCaml]/[Opam] ecosystem use a functional style and
-don't provide a class hierrachy.
+don't provide a class hierarchy.
 
 [Opam]: http://opam.ocaml.org
 
