@@ -103,21 +103,30 @@ _This probably needs some discussion_
   spaces.
 
 * Line length should not exceed 100 characters. Break up long lines in
-  new code in particular.
+  new code in particular. The [OCaml Guidelines] demand lines not
+  exceeding 80 characters.
 
 * For new code, prefer spaces over tabs and use [ocp-indent] to maintain
   consistent indentation. Note that [ocp-indent] does not break up long lines.
 
 * Most OCaml code bases uses 2 spaces per indentation level.
 
-* When making changes ensure that indentation is still correct after your change,
-  re-indenting as necessary, but not excessively.
+* When making changes ensure that indentation is still correct after
+  your change, re-indenting as necessary, but not excessively.
 
 Rationale:
 
 * Overly long lines create problems when printing source code and when
   resolving merge conflicts in tools by forcing a lot of sideways
-  scrolling.
+  scrolling. Lines of 80 characters and shorter support viewing code
+  side by side.
+
+  General typography recommends the line length not to exceed 2.5 to 3
+  alphabets, i.e. 65 to 78 characters, for supporting the eye moving
+  from the end of a line to the beginning of the next (cf. [The Elements
+  of Typographic
+  Style](https://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style)).
+
 * Spaces are unambiguous in meaning whereas tabs depend on the
   environment.
 * [ocp-indent] is a proven way to re-establish consistent
