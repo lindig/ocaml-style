@@ -864,7 +864,7 @@ Examples:
 ## Use Pattern Matching for Value Destruction
 
 The readability of code is improved by using pattern matching rather
-than (neeply nested) if-then-else control flow. Multiple patterns can be
+than (deeply nested) if-then-else control flow. Multiple patterns can be
 matched at the same time.
 
 ```ocaml
