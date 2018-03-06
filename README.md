@@ -580,6 +580,12 @@ existing code.
 * Constructing log and error messages can be made simpler by defining a
   function that behaves like `Printf.sprintf`:
 
+* Two basic strategies for error handling exist: using exceptions, or
+  the `Result.result` type. The latter has the advantage of making error
+  handling explicit in the types of functions whereas exceptions are not
+  tracked by the type system. However, there is no strategy that is
+  clearly superior. A recent discussion of this topic can be found at [Specific reason for not embracing the use of exceptions for error propagation?](https://discuss.ocaml.org/t/specific-reason-for-not-embracing-the-use-of-exceptions-for-error-propagation/1666/11).
+
 ```ocaml
 type 'a t = Ok of 'a | Error of string
 let error fmt = Printf.kprintf (fun msg -> Error msg) fmt
