@@ -391,6 +391,12 @@ they lead to complicated inferred types. They have their use case in
 specific use cases but they should not be used simply to avoid a type
 declaration.
 
+A recent discussion of polymorphic and regular variants is
+[Do I need polymorphic
+variants?](https://discuss.ocaml.org/t/do-i-need-polymorphic-variants/1683/8).
+The subject is encoding a finite state machine where the author would
+like the type system to prohibit certain state transitions.
+
 ## Avoid Opening Modules Globally
 
 For convenience, many developers open modules globally in order to gain
