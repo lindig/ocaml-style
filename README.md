@@ -20,6 +20,7 @@ Topics](#uncovered-topics) is a place to record desirable topics.*
 ## Table of Contents
 
 * [OCaml Towards Clarity and Grace](#ocaml-towards-clarity-and-grace)
+  * [Table of Contents](#table-of-contents)
   * [Other Resources](#other-resources)
   * [Guiding Principles](#guiding-principles)
   * [Uncovered Topics](#uncovered-topics)
@@ -31,6 +32,7 @@ Topics](#uncovered-topics) is a place to record desirable topics.*
     * [Caveats](#caveats)
     * [Viewing rendered documentation](#viewing-rendered-documentation)
   * [Naming and Declarations](#naming-and-declarations)
+  * [Don't use ;;](#dont-use-)
   * [Scoping](#scoping)
   * [Constants](#constants)
   * [Introduce and Document Interfaces](#introduce-and-document-interfaces)
@@ -57,7 +59,6 @@ Topics](#uncovered-topics) is a place to record desirable topics.*
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 </details>
-
 
 [OCaml]:  https://www.ocaml.org/
 
@@ -278,6 +279,11 @@ Special cases:
 
 This ties in with the recommendation above to not use `tree` for
 the type declaration in module `Tree`.
+
+## Don't use ;;
+
+There is no place for the double semicolon (`;;`) in OCaml source code.
+It is used only interactively in the [OCaml] toplevel (REPL).
 
 ## Scoping
 
