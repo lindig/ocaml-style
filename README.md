@@ -46,6 +46,7 @@ Topics](#uncovered-topics) is a place to record desirable topics.*
   * [Error Messages and Error Handling](#error-messages-and-error-handling)
   * [Split imperative and functional code](#split-imperative-and-functional-code)
   * [Functions \- Argument Order](#functions---argument-order)
+  * [Functions \- Named Parameters](#functions---named-parameters)
   * [Functions \- Pattern Matching](#functions---pattern-matching)
   * [Functions \- Data Flow](#functions---data-flow)
   * [Functions \- Avoid Deep Nesting](#functions---avoid-deep-nesting)
@@ -178,7 +179,7 @@ provide it: the why.
 ### What not to Comment
 
 * Purpose of a local let binding - the name should tell it
-* Every line in function
+* Every line in a function
 
 ### Examples
 
@@ -664,6 +665,39 @@ general consideration when writing code.
   mathematical function on more than one data structure, the arguments
   are chosen to match the most usual argument order for the function.
 
+
+## Functions - Named Parameters
+
+Parameters in a function call are usually identified by their position
+but may be identified by name. The name becomes part of the type.
+
+```ocaml
+(** [prefix ~pre s] returns [true] iff [pre] is a prefix of [s]. *)
+let prefix ~pre s =
+  let len = String.length pre in
+  if len > String.length s then false
+  else begin
+    let rec check i =
+      if i=len then true
+      else if String.get s i <> String.get pre i then false
+      else check (i+1)
+    in
+    check 0
+  end
+```
+
+Consider using named parameters if a function takes several arguments of
+the same type that could be confused. Without a named parameter, the
+above function would have type `string -> string -> bool` and is it not
+obvious, which roles the two strings have. As it is, the function has
+the following type:
+
+```ocaml
+val prefix : pre:string -> string -> bool
+```
+
+This function may be called as `prefix "foobar" ~pre:"foo"` but it can't
+be called without a named parameter -- which adds to clarity.
 
 ## Functions - Pattern Matching
 
