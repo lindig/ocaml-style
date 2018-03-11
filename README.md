@@ -110,7 +110,7 @@ _This probably needs some discussion_
 * For new code, prefer spaces over tabs and use [ocp-indent] to maintain
   consistent indentation. Note that [ocp-indent] does not break up long lines.
 
-* Most OCaml code bases uses 2 spaces per indentation level.
+* Most OCaml code bases use 2 spaces per indentation level.
 
 * When making changes ensure that indentation is still correct after
   your change, re-indenting as necessary, but not excessively.
@@ -133,7 +133,7 @@ Rationale:
 * [ocp-indent] is a proven way to re-establish consistent
   indentation while still leaving room for other aspects of code
   formatting.
-* When adding an `if` expression it might be necessary to reindent the
+* When adding an `if` expression it might be necessary to re-indent the
   whole body of a function, but avoid re-indenting the whole file, which
   causes merge conflicts with people working on other branches, it is
   best to plan ahead and do such large scale changes as separate
@@ -144,7 +144,7 @@ Rationale:
 ## Comments
 
 Comments generally go before the code they are referencing. The possible
-exception are declarations in interfaces (mli files, signatures) and
+exception are declarations in interfaces (`mli` files, signatures) and
 types where they can go after the declaration.
 
 Syntactically there are two kinds of comments:
@@ -816,7 +816,7 @@ it locally.
 Resources that need to be managed are not just files but can be
 anything like database and network connections or timers.
 
-Amore finer detail is that care should be taken not to destroy the
+A finer detail is that care should be taken not to destroy the
 backtrace of an exception if the code in finally (or functions called by
 it) raise/catch exceptions of its own.
 
@@ -904,7 +904,7 @@ let wait color = (* bad *)
 Introducing new dependencies on outside libraries needs to be well
 justified.
 
-With Opam it is easy to install libraries and to use them. It is usually
+With [Opam] it is easy to install libraries and to use them. It is usually
 better to use a well-established and maintained library than to roll
 your own. This is especially true for well-established protocols,
 formats and problems in general. But any new library also brings along
