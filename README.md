@@ -66,6 +66,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 ## Other Resources
 
 * Official [OCaml Guidelines] - very detailed
+* [Jane Street](https://opensource.janestreet.com/standards/)
 * [Upenn]'s style guide for student projects
 * [OCaml Tutorial]
 * [OCaml Manual]
