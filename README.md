@@ -74,6 +74,12 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 * [Real World OCaml] Book
 * [Hammer Lab](https://github.com/hammerlab/style-guides/blob/master/ocaml.md)
 
+Below is a list of projects that I like for their clean code that could
+serve as a general inspiration.
+
+* [Tezos](https://gitlab.com/tezos/tezos)
+* [OCaml Containers](https://github.com/c-cube/ocaml-containers)
+
 [Xen Project]: https://wiki.xenproject.org/wiki/OCaml_Best_Practices_for_Developers
 [Upenn]:            https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
 [OCaml Tutorial]:   https://ocaml.org/learn/tutorials/guidelines.html
