@@ -120,6 +120,11 @@ _This probably needs some discussion_
 * For new code, prefer spaces over tabs and use [ocp-indent] to maintain
   consistent indentation. Note that [ocp-indent] does not break up long lines.
 
+* [OCamlformat](https://github.com/ocaml-ppx/ocamlformat) can be used to
+  automatically re-format a project beyond just indentation. Some teams
+  are moving towards using it to format all code to avoid any
+  discussions about formating.
+
 * Most OCaml code bases use 2 spaces per indentation level.
 
 * When making changes ensure that indentation is still correct after
