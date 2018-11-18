@@ -17,7 +17,8 @@ Topics](#uncovered-topics) is a place to record desirable topics.*
 <details>
 <summary>Table of Contents</summary>
 
-## Table of Contents
+Table of Contents
+=================
 
 * [OCaml Towards Clarity and Grace](#ocaml-towards-clarity-and-grace)
   * [Table of Contents](#table-of-contents)
@@ -53,6 +54,7 @@ Topics](#uncovered-topics) is a place to record desirable topics.*
   * [Functions \- Tail Recursion](#functions---tail-recursion)
   * [Resources and Exceptions: use finally](#resources-and-exceptions-use-finally)
   * [Compare Functions](#compare-functions)
+  * [Type Compatibility and Functors](#type-compatibility-and-functors)
   * [Objects](#objects)
   * [Git \- Commit Messages](#git---commit-messages)
   * [Use Pattern Matching for Value Destruction](#use-pattern-matching-for-value-destruction)
@@ -899,6 +901,45 @@ end
 ```
 
 This relies on the left-associativity of the infix `<?>` operator.
+
+## Type Compatibility and Functors
+
+Below we have a functor and instantiate it twice:
+
+```ocaml
+module X (E: sig end): sig 
+  type t 
+  val t: t 
+end = struct 
+  type t = int 
+  let t = 0 
+end
+
+module X1 = X (struct end)
+module X2 = X (struct end)
+```
+
+The types `X1.t` and `X2.t` are distinct:
+
+```ocaml
+X1.t = X2.t;;
+Error: This expression has type X2.t but an expression was expected of type
+         X1.t
+```
+
+However, if we construct the two modules slightly different by applying
+an existing module twice, they are compatible:
+
+```ocaml
+module E = struct end
+module X1' = X(E)
+module X2' = X(E)
+
+X1'.t = X2'.t;;
+- : bool = true
+```
+Both behaviours can be useful - so be careful when instantiating a
+functor multiple times.
 
 ## Objects
 
