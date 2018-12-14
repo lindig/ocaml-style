@@ -53,6 +53,7 @@ Table of Contents
   * [Functions \- Avoid Deep Nesting](#functions---avoid-deep-nesting)
   * [Functions \- Tail Recursion](#functions---tail-recursion)
   * [Resources and Exceptions: use finally](#resources-and-exceptions-use-finally)
+  * [Exceptions: try\-with vs\. match](#exceptions-try-with-vs-match)
   * [Compare Functions](#compare-functions)
   * [Type Compatibility and Functors](#type-compatibility-and-functors)
   * [Objects](#objects)
@@ -869,6 +870,31 @@ anything like database and network connections or timers.
 A finer detail is that care should be taken not to destroy the
 backtrace of an exception if the code in finally (or functions called by
 it) raise/catch exceptions of its own.
+
+## Exceptions: try-with vs. match
+
+OCaml 4.02 introduced the ability to match exceptions in patterns. This
+is often more elegant than using `try .. with`. However, a small
+difference is worth knowing:
+
+```ocaml
+let f x =
+  try
+    match x with
+    | [] -> 0
+    | _ :: _ -> failwith "not empty" (* caught below *)
+  with _ -> 1
+
+let g x =
+  match x with
+  | [] -> 0
+  | _ :: _ -> failwith "not empty" (* escapes *)
+  | exception _ -> 1
+```
+
+When using `match`, the evaluation of the right hand side is not
+governed by an exception handler, whereas it is when using `match`
+inside a `try` block.
 
 ## Compare Functions
 
