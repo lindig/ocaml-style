@@ -72,7 +72,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 * [Jane Street](https://opensource.janestreet.com/standards/)
 * [Xen Project]
 * [Upenn]'s style guide for student projects
-* [OCaml Tutorial]
 * [OCaml Manual]
 * [Real World OCaml] Book
 * [Hammer Lab](https://github.com/hammerlab/style-guides/blob/master/ocaml.md)
@@ -85,7 +84,6 @@ serve as a general inspiration.
 
 [Xen Project]: https://wiki.xenproject.org/wiki/OCaml_Best_Practices_for_Developers
 [Upenn]:            https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
-[OCaml Tutorial]:   https://ocaml.org/learn/tutorials/guidelines.html
 [OCaml Manual]:     http://caml.inria.fr/pub/docs/manual-ocaml/index.html
 [Real World OCaml]: https://dev.realworldocaml.org/
 [OCaml Guidelines]: https://ocaml.org/learn/tutorials/guidelines.html
