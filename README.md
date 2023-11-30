@@ -83,7 +83,7 @@ serve as a general inspiration.
 * [OCaml Containers](https://github.com/c-cube/ocaml-containers)
 
 [Xen Project]: https://wiki.xenproject.org/wiki/OCaml_Best_Practices_for_Developers
-[Upenn]:            https://www.seas.upenn.edu/~cis341/current/programming_style.shtml
+[Upenn]:            https://www.seas.upenn.edu/~cis3410/current/codestyle.html
 [OCaml Manual]:     http://caml.inria.fr/pub/docs/manual-ocaml/index.html
 [Real World OCaml]: https://dev.realworldocaml.org/
 [OCaml Guidelines]: https://ocaml.org/learn/tutorials/guidelines.html
